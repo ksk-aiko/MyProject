@@ -14,7 +14,7 @@
     <div class="container">
         <h1 class="" style="font-size:80px; text-align:center; font-family:'HG行書体';">プログラミングの心構え</h1>
         <form action="result.php" method="post" autocomplete="off">
-        <label class="form-label" style="font-family:'HG行書体';">
+        <label class="form-label" style="font-family:'HG行書体';" for="attitude">
             今日学んだ心構え
         </label>
             <input type="text" name="input" id="attitude" class="form-control mt-3" style="font-family:'HG行書体';">
