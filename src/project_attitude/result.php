@@ -65,10 +65,12 @@ mysqli_close($link);
             <div class="header mt-5 bg-primary p-2" style=" font-family:'HG行書体'; text-align:center; color:white;">
                 <h1 style="font-size:40px;">これまでに学んだ心構え</h1>
             </div>
-            <div class="attitudes">
-                <ul>
+            <div class="attitudes card" style="">
+                <ul class="list-group list-group-flush">
                     <?php foreach ( $attitudes as $knowledge) : ?>
-                    <li><?php echo $knowledge['content']; ?></li>
+                    <div>
+                        <li class="list-group-item" style="font-size: 20px; font-weight:bold;"><?php echo $knowledge['content']; ?></li>
+                    </div>
                     <?php endforeach ?>
                 </ul>
             </div>
