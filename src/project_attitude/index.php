@@ -3,7 +3,7 @@
 
 function listAttitudes($link)
 {
-    $sql = 'SELECT content FROM attitudes;';
+    $sql = 'SELECT id, content FROM attitudes;';
     $results = mysqli_query($link, $sql);
     $attitudes = [];
     while ($attitude = mysqli_fetch_assoc($results)) {
@@ -40,7 +40,11 @@ mysqli_close($link);
                 <ul class="list-group list-group-flush">
                     <?php foreach ($attitudes as $knowledge) : ?>
                         <div>
-                            <li class="list-group-item" style="font-size: 20px; font-weight:bold;"><?php echo $knowledge['content']; ?></li>
+                            <li class="list-group-item" style="font-size: 20px; font-weight:bold;"><?php echo $knowledge['id'] . ':' . $knowledge['content']; ?></li>
+                             <form action="delete.php" method="post">
+                                <button type="submit" class="btn btn-danger" style="float: right; " name= "{$knowledge['id']}">削除する</button>
+                             </form>
+
                         </div>
                     <?php endforeach ?>
                 </ul>
