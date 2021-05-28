@@ -26,6 +26,10 @@
             <a href="index.php" style="font-size:30px;">これまでに学んだ心構えはコチラ</a>
 
         </div>
+        <div class="image mt-4">
+            <img src="https://picsum.photos/1320/600" alt="">
+            <h2 style="color: white; position:absolute; top:45%; left:20%; font-size:80px;">Attitudes for programming.</h2>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
