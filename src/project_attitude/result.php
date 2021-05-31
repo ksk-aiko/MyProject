@@ -65,5 +65,9 @@ mysqli_close($link);
             <a href="index.php" style="font-size:30px;">これまでに学んだ心構えはコチラ</a>
 
         </div>
+        <div class="image mt-4">
+            <img src="https://picsum.photos/1320/600" alt="">
+            <h2 style="color: white; position:absolute; top:45%; left:20%; font-size:80px;">Attitudes for programming.</h2>
+        </div>
     </div>
 </body>

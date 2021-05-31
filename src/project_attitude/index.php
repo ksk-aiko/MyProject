@@ -40,9 +40,10 @@ mysqli_close($link);
                 <ul class="list-group list-group-flush">
                     <?php foreach ($attitudes as $knowledge) : ?>
                         <div>
-                            <li class="list-group-item" style="font-size: 20px; font-weight:bold;"><?php echo $knowledge['id'] . ':' . $knowledge['content']; ?></li>
+                            <li class="list-group-item" style="font-size: 20px; font-weight:bold;"><?php echo $knowledge['content']; ?></li>
                              <form action="delete.php" method="post">
-                                <button type="submit" class="btn btn-danger" style="float: right; " name= "{$knowledge['id']}">削除する</button>
+                                <input type="submit" class="btn btn-danger" style="float: right; " value="削除する" name="delete">
+                                <input type="hidden" name="delete" value="<?php echo $knowledge['id']; ?>">
                              </form>
 
                         </div>
