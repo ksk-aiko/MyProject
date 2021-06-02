@@ -14,3 +14,5 @@ ENV COMPOSER_ALLOW_SUPERUSER 1
 # ファイルのコピー
 COPY ./src /var/www/html
 COPY ./docker/app/php.ini /usr/local/etc/php/php.ini
+
+
