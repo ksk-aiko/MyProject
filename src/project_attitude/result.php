@@ -55,7 +55,7 @@ mysqli_close($link);
 
 <body>
     <div class="container">
-        <h1 style="text-align:center; font-family:'HG行書体'; font-size:80px;">今日学んだ心構え</h1>
+        <h1 style="text-align:center; font-family:'HG行書体'; font-size:40px;">今日学んだ心構え</h1>
         <h2 style="text-align:center; font-family:'HG行書体';" class="mt-3">↓↓↓↓↓↓↓↓↓</h2>
         <h1 style="text-align:center; font-family:'HG行書体'; font-size:60px; color:white;" class="mt-3 bg-danger">
             <?php echo $_POST["input"]; ?>
