@@ -35,7 +35,7 @@ mysqli_close($link);
 <body>
     <div class="container" style="width: 650px;">
         <?php foreach ($books as $book) : ?>
-            <div class="card  mb-3">
+            <div class="card  mb-3 border-dark">
                 <div class="card-body" >
                     <h2 class="card-title"><a href="./detail/web_tech.php"><?php echo $book['title']; ?></a></h2>
                     <!-- <p class="card-text">

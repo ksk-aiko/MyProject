@@ -3,7 +3,7 @@
 
 function aboutBooks($link)
 {
-    $sql = 'SELECT title FROM books WHERE id = 2;';
+    $sql = 'SELECT title FROM books WHERE id = 1;';
     $results = mysqli_query($link, $sql);
     $books = [];
     while ($book = mysqli_fetch_assoc($results)) {
@@ -35,8 +35,8 @@ mysqli_close($link);
 <body>
     <div class="container" style="width: 400px;">
         <?php foreach ($books as $book) : ?>
-            <div class="card  mb-3">
-                <img src="./../img/51HNAhxudcL.jpg" alt="" style="width: 157px; height:221.5px;">
+            <div class="card  mb-3 border-dark">
+                <img src="./../img/51HNAhxudcL.jpg" alt="" style="width: 157px; height:221.5px; margin-left:3rem;">
                 <div class="card-body">
                     <h2 class="card-title"><?php echo $book['title']; ?></h2>
                 </div>
