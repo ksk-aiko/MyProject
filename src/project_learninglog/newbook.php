@@ -11,12 +11,13 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" style="width: 650px;">
         <h1>ラーニングログ</h1>
         <form action="table.php" method="post" class="form-group">
             <input type="text" name="title" class="form-control" placeholder="こちらに書籍名を入力してください">
             <button class="btn btn-primary">書籍を追加</button>
         </form>
+        <a href="index.php" class="btn btn-primary">一覧を表示</a>
     </div>
 </body>
 

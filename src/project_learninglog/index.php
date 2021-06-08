@@ -1,21 +1,5 @@
 <?php
 
-function createBooks($link, $title)
-{
-    $createBooks = <<<EOT
-    INSERT INTO books (
-        title
-    ) VALUES (
-        "{$title}"
-    );
-    EOT;
-
-    $result = mysqli_query($link, $createBooks);
-    if (!$result) {
-        error_log('【Error】:fail to create');
-        error_log('【Debugging error】:') . mysqli_error($link);
-    }
-}
 
 function listBooks($link)
 {
@@ -30,12 +14,8 @@ function listBooks($link)
 
 require_once(__DIR__ . '/database/mysqli.php');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title = $_POST['title'];
-}
 
 $link = dbConnect();
-createBooks($link, $title);
 $books = listBooks($link);
 mysqli_close($link);
 
@@ -53,11 +33,11 @@ mysqli_close($link);
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" style="width: 650px;">
         <?php foreach ($books as $book) : ?>
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title"><?php echo $book['title']; ?></h2>
+            <div class="card  mb-3">
+                <div class="card-body" >
+                    <h2 class="card-title"><a href="./detail/web_tech.php"><?php echo $book['title']; ?></a></h2>
                     <!-- <p class="card-text">
                     書籍が追加されました<br>
                     これからラーニングログアプリを<br>

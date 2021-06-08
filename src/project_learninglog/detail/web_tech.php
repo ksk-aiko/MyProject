@@ -1,25 +1,9 @@
 <?php
 
-function createBooks($link, $title)
-{
-    $createBooks = <<<EOT
-    INSERT INTO books (
-        title
-    ) VALUES (
-        "{$title}"
-    );
-    EOT;
 
-    $result = mysqli_query($link, $createBooks);
-    if (!$result) {
-        error_log('【Error】:fail to create');
-        error_log('【Debugging error】:') . mysqli_error($link);
-    }
-}
-
-function listBooks($link)
+function aboutBooks($link)
 {
-    $sql = 'SELECT id, title FROM books;';
+    $sql = 'SELECT title FROM books WHERE id = 2;';
     $results = mysqli_query($link, $sql);
     $books = [];
     while ($book = mysqli_fetch_assoc($results)) {
@@ -28,15 +12,11 @@ function listBooks($link)
     return $books;
 }
 
-require_once(__DIR__ . '/database/mysqli.php');
+require_once(__DIR__ . '/../database/mysqli.php');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title = $_POST['title'];
-}
 
 $link = dbConnect();
-createBooks($link, $title);
-$books = listBooks($link);
+$books = aboutBooks($link);
 mysqli_close($link);
 
 ?>
@@ -53,21 +33,17 @@ mysqli_close($link);
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" style="width: 400px;">
         <?php foreach ($books as $book) : ?>
-            <div class="card">
+            <div class="card  mb-3">
+                <img src="./../img/51HNAhxudcL.jpg" alt="" style="width: 157px; height:221.5px;">
                 <div class="card-body">
                     <h2 class="card-title"><?php echo $book['title']; ?></h2>
-                    <!-- <p class="card-text">
-                    書籍が追加されました<br>
-                    これからラーニングログアプリを<br>
-                    作り込んでいきましょう！
-                </p> -->
                 </div>
             </div>
         <? endforeach ?>
         <div class="back">
-            <a href="./newbook.php" class="btn btn-success">戻る</a>
+            <a href="../newbook.php" class="btn btn-success">戻る</a>
         </div>
     </div>
 </body>
