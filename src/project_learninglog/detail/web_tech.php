@@ -3,7 +3,7 @@
 
 function aboutBooks($link)
 {
-    $sql = 'SELECT title FROM books WHERE id = 1;';
+    $sql = 'SELECT title FROM books WHERE id = 2;';
     $results = mysqli_query($link, $sql);
     $books = [];
     while ($book = mysqli_fetch_assoc($results)) {
@@ -35,10 +35,16 @@ mysqli_close($link);
 <body>
     <div class="container" style="width: 400px;">
         <?php foreach ($books as $book) : ?>
-            <div class="card  mb-3 border-dark">
-                <img src="./../img/51HNAhxudcL.jpg" alt="" style="width: 157px; height:221.5px; margin-left:3rem;">
-                <div class="card-body">
-                    <h2 class="card-title"><?php echo $book['title']; ?></h2>
+            <div class="card  mb-3 border-dark mt-3">
+                <div class="container">
+                    <img src="./../img/51HNAhxudcL.jpg" alt="" style="width: 157px; height:221.5px; margin-left:3rem;">
+                    <div class="card-body">
+                        <h2 class="card-title"><?php echo $book['title']; ?></h2>
+                    </div>
+                    <form action="./../table/table_content.php" method="post" class="form-group">
+                        <input type="text" name="table" class="form-control " placeholder="目次を追加してください">
+                        <button type="submit" class="btn btn-primary my-3">目次を追加</button>
+                    </form>
                 </div>
             </div>
         <? endforeach ?>
