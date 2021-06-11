@@ -23,3 +23,31 @@ li {
   float: right;
   color: #808080;
 }
+
+.header-right li {
+  float: left;
+  padding: 20px 30px;
+  border-left: 1px solid #dddddd;
+}
+
+.footer {
+  height: 200px;
+  clear: left;
+  border-top: 1px solid #dddddd;
+}
+
+.footer-left {
+  float: left;
+  padding: 30px 100px;
+}
+
+.footer-left li {
+  margin-bottom: 5px;
+  color: #808080;
+  border-bottom: 1px dotted #808080;
+}
+
+.list-group a {
+  font-weight: bold;
+  font-size: 20px;
+}
