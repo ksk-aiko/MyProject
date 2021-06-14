@@ -1,4 +1,8 @@
 <?php
-echo 1;
-echo 2;
-echo PHP_VERSION . PHP_EOL;
+
+function getCurrentDate() {
+    sleep(3);
+    echo date('Y-m-d H:i:s') . PHP_EOL;
+}
+
+getCurrentDate();
