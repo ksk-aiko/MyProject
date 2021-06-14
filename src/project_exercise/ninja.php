@@ -1,8 +1,11 @@
 <?php
 
-function getCurrentDate() {
-    sleep(3);
-    echo date('Y-m-d H:i:s') . PHP_EOL;
-}
+$list = [-1, 0, 1, "2", "3A", 4.1, [5], "1,000", 1001];
+//配列から整数のみ取り出した配列を作成
 
-getCurrentDate();
+//foreachで1要素ずつ出力
+foreach ($list as $number) {
+    if (is_numeric($number)) {
+        echo $number . nl2br(PHP_EOL);
+    }
+}

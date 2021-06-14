@@ -24,6 +24,11 @@
       <a href="https://www.php.net/manual/en/function.strpos.php" class="list-group-item list-group-item-action">strpos():文字列内を検索する</a>
       <a href="https://www.php.net/manual/en/function.str-replace.php" class="list-group-item list-group-item-action">str_replace():文字列内の文字を置換する</a>
       <a href="https://www.php.net/manual/en/function.mb-strlen.php" class="list-group-item list-group-item-action">mb_strlen():日本語の文字数をカウントする</a>
+      <a href="https://www.php.net/manual/en/function.substr.php" class="list-group-item list-group-item-action">substr():文字列から指定した長さ分取り出す</a>
+      <a href="https://www.php.net/manual/en/function.substr-replace.php" class="list-group-item list-group-item-action">substr_replace():文字列の指定した位置を置換する</a>
+      <a href="https://www.php.net/manual/en/function.preg-match.php" class="list-group-item list-group-item-action">preg_match():正規表現で検索した結果を変数に代入する</a>
+      <a href="https://www.php.net/manual/en/function.preg-match-all.php" class="list-group-item list-group-item-action">preg_match_all():正規表現で検索した結果を全て変数に代入する</a>
+      <a href="https://www.php.net/manual/en/function.preg-replace.php" class="list-group-item list-group-item-action">preg_replace():正規表現で検索した部分を置換する</a>
     </div>
   </div>
 </body>
