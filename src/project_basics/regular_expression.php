@@ -118,6 +118,42 @@
                     <td>キャレットハット</td>
                     <td>行の先頭</td>
                 </tr>
+                <tr>
+                    <th scope="row">16</th>
+                    <td>$</td>
+                    <td>ダラー</td>
+                    <td>行の末尾</td>
+                </tr>
+                <tr>
+                    <th scope="row">17</th>
+                    <td>/b</td>
+                    <td>boundry</td>
+                    <td>単語の境界</td>
+                </tr>
+                <tr>
+                    <th scope="row">18</th>
+                    <td>|</td>
+                    <td>選択子</td>
+                    <td>または</td>
+                </tr>
+                <tr>
+                    <th scope="row">19</th>
+                    <td>[ ]</td>
+                    <td>文字クラス</td>
+                    <td>[ ]の中のどれか１文字</td>
+                </tr>
+                <tr>
+                    <th scope="row">20</th>
+                    <td>[^ ]</td>
+                    <td>文字クラスの^</td>
+                    <td>否定</td>
+                </tr>
+                <tr>
+                    <th scope="row">21</th>
+                    <td>[- ]</td>
+                    <td>範囲指定</td>
+                    <td>文字コード表に基づき、範囲を指定</td>
+                </tr>
             </tbody>
         </table>
         <a href="index.php" style="font-size: 40px;">戻る</a>
