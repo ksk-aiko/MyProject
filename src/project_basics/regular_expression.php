@@ -154,6 +154,30 @@
                     <td>範囲指定</td>
                     <td>文字コード表に基づき、範囲を指定</td>
                 </tr>
+                <tr>
+                    <th scope="row">22</th>
+                    <td>\t</td>
+                    <td>タブ</td>
+                    <td>タブを検索</td>
+                </tr>
+                <tr>
+                    <th scope="row">23</th>
+                    <td>\n</td>
+                    <td>改行</td>
+                    <td>Unixにおける改行</td>
+                </tr>
+                <tr>
+                    <th scope="row">24</th>
+                    <td>( ) $1 $2</td>
+                    <td>キャプチャ</td>
+                    <td>( )内を記憶し、置換で使う</td>
+                </tr>
+                <tr>
+                    <th scope="row">25</th>
+                    <td>( ) \1 \2</td>
+                    <td>後方参照</td>
+                    <td>( )内を記憶し、後ろで使う</td>
+                </tr>
             </tbody>
         </table>
         <a href="index.php" style="font-size: 40px;">戻る</a>

@@ -31,6 +31,10 @@
       <a href="regular_expression.php" class="ms-5">→正規表現</a>
       <a href="https://www.php.net/manual/en/function.preg-match-all.php" class="list-group-item list-group-item-action">preg_match_all():正規表現で検索した結果を全て変数に代入する</a>
       <a href="https://www.php.net/manual/en/function.preg-replace.php" class="list-group-item list-group-item-action">preg_replace():正規表現で検索した部分を置換する</a>
+      <a href="https://www.php.net/manual/en/function.implode.php" class="list-group-item list-group-item-action">implode():配列から文字列に変換</a>
+      <a href="https://www.php.net/manual/en/function.explode.php" class="list-group-item list-group-item-action">explode():文字列から配列に変換</a>
+      <a href="https://www.php.net/manual/en/ref.math.php" class="list-group-item list-group-item-action">ceil(), floor(), round(), mt_rand(), max(), min(), M_PI, M_SQRT2</a>
+      <a href="https://www.php.net/manual/en/ref.math.php" class="ms-5">→数学系の関数</a>
     </div>
   </div>
 </body>
