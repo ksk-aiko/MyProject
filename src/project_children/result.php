@@ -10,6 +10,7 @@
   <title>Document</title>
 </head>
 <body>
-  <h1 style="font-size: 50px; color:blue;">英語がんばってね！</h1>
+  <h1 style="color:blue;"><?php echo $_POST['rikuto'] ?></h1>
+  <a href="rikuto.php" style="font-size: 40px;">戻る</a>
 </body>
 </html>
