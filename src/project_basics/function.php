@@ -35,6 +35,10 @@
       <a href="https://www.php.net/manual/en/function.explode.php" class="list-group-item list-group-item-action">explode():文字列から配列に変換</a>
       <a href="https://www.php.net/manual/en/ref.math.php" class="list-group-item list-group-item-action">ceil(), floor(), round(), mt_rand(), max(), min(), M_PI, M_SQRT2</a>
       <a href="https://www.php.net/manual/en/ref.math.php" class="ms-5">→数学系の関数</a>
+      <a href="https://www.php.net/manual/en/function.array-unshift.php" class="list-group-item list-group-item-action">array_unshift():配列の先頭に要素を追加する</a>
+      <a href="https://www.php.net/manual/en/function.array-push.php" class="list-group-item list-group-item-action">array_push():配列の末尾に要素を追加する</a>
+      <a href="https://www.php.net/manual/en/function.array-shift.php" class="list-group-item list-group-item-action">array_shift():配列の先頭から要素を削除する</a>
+      <a href="https://www.php.net/manual/en/function.array-pop.php" class="list-group-item list-group-item-action">array_pop():配列の末尾から要素を削除する</a>
     </div>
   </div>
 </body>
