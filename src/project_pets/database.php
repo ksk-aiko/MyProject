@@ -10,8 +10,10 @@ $pdo->query("DROP TABLE IF EXISTS pets");
 $pdo->query(
     "CREATE TABLE pets (
         id INT NOT NULL AUTO_INCREMENT,
-        message VARCHAR(140),
-        likes INT,
+        breed VARCHAR(30),
+        color VARCHAR(20),
+        sex VARCHAR(10),
+        birthplace VARCHAR(20),
         PRIMARY KEY (id)
         )"
 );
