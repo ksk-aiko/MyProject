@@ -8,6 +8,6 @@ class FunctionAnonymousTest extends TestCase{
 
     public function testAnonymous()
     {
-        $this->assertSame(['7'], convertToNumber('C7'));
+        $this->assertSame(['3', '10', 'A'], convertToNumber('H3', 'S10', 'DA'));
     }
 }
