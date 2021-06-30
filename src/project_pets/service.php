@@ -14,7 +14,7 @@
 
 <body>
     <div class="container">
-        <a href="" class="btn btn-primary mb-3">犬</a><br>
+        <a href="dog.php" class="btn btn-primary mb-3">犬</a><br>
         <a href="" class="btn btn-primary mb-3">猫</a><br>
         <a href="" class="btn btn-primary mb-3">小動物、鳥</a><br>
         <a href="" class="btn btn-primary mb-3">爬虫類</a><br>

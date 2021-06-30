@@ -14,6 +14,7 @@ $pdo->query(
         color VARCHAR(20),
         sex VARCHAR(10),
         birthplace VARCHAR(20),
+        customer VARCHAR(30),
         PRIMARY KEY (id)
         )"
 );
