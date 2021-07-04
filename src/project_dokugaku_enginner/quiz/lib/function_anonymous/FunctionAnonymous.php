@@ -7,8 +7,8 @@ function convertToNumber (...$cards):array {
     foreach ($cards as $card) {
         if (2 <= $card[1] && $card[1] <= 9) {
             $results[] = $card[1];
-        } elseif ($card[2] === 0) {
-            $results[] = 10;
+        } elseif ($card[1] === '1') {
+            $results[] = '10';
         } else {
             $results[] = $card[1];
         }
@@ -17,4 +17,3 @@ function convertToNumber (...$cards):array {
     return $results;
 }
 
-// $results = convertToNumber('C7');
