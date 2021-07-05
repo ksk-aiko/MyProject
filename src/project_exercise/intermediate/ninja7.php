@@ -12,14 +12,20 @@ $nameAndAvr = [];
 foreach ($list as $nameAndScore) {
 
     $nameAndAvr[] = [$nameAndScore['name'] => (array_sum($nameAndScore['test'])) / count($nameAndScore['test'])];
-
 }
 
-var_dump($nameAndAvr);
-
-foreach ($nameAndAvr as $key => $value) {
-    if (!is_int($value)) {
-        $value = 0;
+$array = [];
+for ($i=0; $i<count($nameAndAvr); $i++) {
+    foreach ($nameAndAvr[$i] as $key => $value) {
+        if (!is_int($value)) {
+            $value = 0;
+        }
+        $array[$key] = $value;
     }
-    echo "{$key}:{$value}" . nl2br(PHP_EOL);
+}
+
+arsort($array);
+
+foreach ($array as $key => $value) {
+    echo "{$key}:{$value}" . PHP_EOL;
 }
