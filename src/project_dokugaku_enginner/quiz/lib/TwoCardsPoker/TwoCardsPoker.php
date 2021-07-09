@@ -41,7 +41,7 @@ function showDown(string $card1_1, string $card1_2, string $card2_1, string $car
     //プレイヤー毎のランク配列に、コールバック関数を適用し、それぞれの役を配列で返し、$handsに代入する
     $hands = array_map(fn ($playerCardRank) => checkHands($playerCardRank[0], $playerCardRank[1]), $playerCardRanks);
     //勝者を判定する
-    $winner = decideWinner();
+    $winner = decideWinner($hands[0], $hands[1]);
     return [$hands[0]['name'], $hands[1]['name'], $winner];
 }
 
@@ -97,6 +97,21 @@ function isPair(int $cardRank1, int $cardRank2): bool
 function isMinMax($cardRank1, $cardRank2): bool
 {
     return abs($cardRank1 - $cardRank2) === (max(CARD_RANK) - min(CARD_RANK));
+}
+
+function decideWinner(array $hands1, array $hands2):int
+{
+    foreach (['rank', 'primary', 'secondary'] as $k) {
+        if ($hands1[$k] > $hands2[$k]) {
+            return 1;
+        }
+
+        if ($hands1[$k] < $hands2[$k]) {
+            return 2;
+        }
+
+    }
+    return 0;
 }
 /*
 ------------------------------【最初に自分で書いたコード】-------------------------------------------
