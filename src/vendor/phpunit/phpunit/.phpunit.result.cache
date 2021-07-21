@@ -1,1 +1,1 @@
-{"version":1,"defects":{"FunctionAnonymousTest::testAnonymous":3,"TwoCardsPokerTest::testPoker":3},"times":{"FunctionAnonymousTest::testAnonymous":0.003,"TwoCardsPokerTest::testPoker":0.003}}
+{"version":1,"defects":{"FunctionAnonymousTest::testAnonymous":3,"TwoCardsPokerTest::testPoker":3},"times":{"FunctionAnonymousTest::testAnonymous":0.003,"TwoCardsPokerTest::testPoker":0.015}}
