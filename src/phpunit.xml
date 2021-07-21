@@ -1,0 +1,9 @@
+<phpunit colors="true"
+              verbose="true"
+              bootstrap="vendor/autoload.php">
+    <testsuites>
+        <testsuite name="My Test Suite">
+            <directory>project_dokugaku_enginner/quiz/tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

@@ -79,6 +79,10 @@ function checkHands(int $cardRank1, int $cardRank2, int $cardRank3): array
         $name = PAIR;
     }
 
+    if (isThreeCard($cardRank1, $cardRank2, $cardRank3)) {
+        $name = THREE_CARD;
+    }
+
 
     //役の判定だけでなく、勝者判定のロジックを実装していくため、連想配列で返しておく
     return [
@@ -96,11 +100,13 @@ function isStraight(int $cardRank1, int $cardRank2, int $cardRank3): bool
     //2枚のカードの差の絶対値が1か、カードランクの最小値と最大値の組み合わせであればストレートと判定する
     if (abs(max($ranksArray) - min($ranksArray)) === 2) {
         return true;
+    } elseif(abs(max($ranksArray) - min($ranksArray)) === 12 && (array_sum($ranksArray) === 26 || array_sum($ranksArray) === 13) ){
+        return true;
+    } else {
+        return false;
     }
 
-    if (abs(max($ranksArray) - min($ranksArray)) === 12 && array_sum($ranksArray) === 26) {
-        return true;
-    }
+    
 }
 
 
@@ -117,13 +123,26 @@ function isPair(int $cardRank1, int $cardRank2, int $cardRank3): bool
     }
 }
 
+function isThreeCard(int $cardRank1, int $cardRank2, $cardRank3) :bool
+{
+    if ($cardRank1 === $cardRank2) {
+        if ($cardRank2 === $cardRank3) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 function oneTwoThree($cardRank1, $cardRank2, $cardRank3): bool
 {
     $ranksArray = [$cardRank1, $cardRank2, $cardRank3];
     rsort($ranksArray);
-    if (abs(max($ranksArray) - min($ranksArray)) === 2 && array_sum($ranksArray) === 6) {
+    if (abs(max($ranksArray) - min($ranksArray)) === 12 && array_sum($ranksArray) === 13) {
         return true;
     }
+
+    return false;
 }
 
 function decideWinner(array $hands1, array $hands2): int
