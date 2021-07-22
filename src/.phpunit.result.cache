@@ -1,1 +1,1 @@
-{"version":1,"defects":[],"times":{"ThreeCardsPokerTest::testPoker":0.031}}
+{"version":1,"defects":{"handleBothRuleTest::testPoker":3},"times":{"ThreeCardsPokerTest::testPoker":0.031,"handleBothRuleTest::testPoker":0.033}}
