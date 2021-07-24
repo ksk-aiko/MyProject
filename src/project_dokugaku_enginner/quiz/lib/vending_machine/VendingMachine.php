@@ -1,27 +1,34 @@
 <?php
 
+require_once(__DIR__ . '/Drink.php');
+require_once(__DIR__ . '/DepositCoin.php');
+
 class VendingMachine
 {
-    private const PRICE_OF_DRINK = 100;
-
-    private int $depositedCoin = 0;
-
-    public function depositCoin(int $coinAmount):int
+    public function __construct()
     {
-        if ($coinAmount === 100) {
-            $this->depositedCoin += $coinAmount;
-        }
-
-        return $this->depositedCoin;
+        
     }
 
-    public function pressButton():string
+    public function start()
     {
-        if ($this->depositedCoin >= $this::PRICE_OF_DRINK) {
-            $this->depositedCoin -= $this::PRICE_OF_DRINK;
-            return 'cider';
-        } else {
-            return '';
-        }
+        $coin = new Coin();
+        $depositedCoin = $coin->depositCoin($coinAmount);
+
     }
+
+    // public function pressButton():string
+    // {
+    //     //単一責任の原則に沿って、書き換える
+    //     // if ($this->depositedCoin >= $this::PRICE_OF_DRINK) {
+    //     //     $this->depositedCoin -= $this::PRICE_OF_DRINK;
+    //     //     return $drink;
+    //     // } else {
+    //     //     return '';
+    //     // }
+
+
+
+    //     retun $drink;
+    // }
 }
