@@ -15,8 +15,10 @@ class Coin
     {
         if ($coinAmount === 100) {
             $this->depositedCoin += $coinAmount;
+        } else {
+            return 0;
         }
-
+    //投入されたお金の累計金額を返す
         return $this->depositedCoin;
     }
 }
