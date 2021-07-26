@@ -7,6 +7,6 @@
         "phpunit/phpunit": "^9.5"
     },
     "scripts":{
-        "phpunit":"./vendor/bin/phpunit"
+        "phpunit":"./vendor/bin/phpunit "
     }
 }
