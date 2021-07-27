@@ -3,7 +3,7 @@
 class Coin
 {
     //投入された累計金額
-    // private int $depositedCoin = 0;
+    private int $depositedCoin;
 
     public function __construct( int $depositedCoin = 0)
     {

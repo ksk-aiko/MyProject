@@ -16,8 +16,9 @@ class VendingMachineTest extends TestCase
 
     public function testPressButton()
     {
-        $vendingMachine = new VendingMachine(100, 'cider');
-        $this->assertSame('cider', $vendingMachine->pressButton());
+        $vendingMachine = new VendingMachine(200, 'beer');
+        $vendingMachine->start();
+        $this->assertSame('beer', $vendingMachine->pressButton(200));
         # お金が投入されてない場合は購入できない
         // $this->assertSame('', $vendingMachine->pressButton());
 
