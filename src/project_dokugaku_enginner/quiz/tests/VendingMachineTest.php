@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require_once(__DIR__ . '/../lib/vending_machine/VendingMachine.php');
+require_once(__DIR__ . '/../lib/vending_machine/self/VendingMachine.php');
 
 class VendingMachineTest extends TestCase
 {

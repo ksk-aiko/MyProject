@@ -5,7 +5,7 @@ require_once(__DIR__ . '/Coin.php');
 
 class VendingMachine
 {
-    private int $depositedCoin = 0;
+    // private int $depositedCoin = 0;
     public function __construct(int $coinAmount, string $button)
     {
         $this->coinAmount = $coinAmount;
