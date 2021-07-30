@@ -4,7 +4,7 @@ require_once(__DIR__ . '/Item.php');
 
 class VendingMachine2
 {
-    private int $depositedCoin = 0;
+    public int $depositedCoin = 0;
 
     public function depositCoin(int $coinAmount): int
     {
