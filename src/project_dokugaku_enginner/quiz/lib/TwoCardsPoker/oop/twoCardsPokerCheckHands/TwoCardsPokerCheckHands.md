@@ -28,3 +28,10 @@ class PokerGameTest extends TestCase
     }
 }
 ```
+
+## タスク
+1. 返ってきた配列の数値を比較する
+2. 数値が同じであれば、pairを返す
+3. 連続した数値であれば、straightを返す
+4. それ以外はhigh card を返す
+5. 各人の役を配列で返す

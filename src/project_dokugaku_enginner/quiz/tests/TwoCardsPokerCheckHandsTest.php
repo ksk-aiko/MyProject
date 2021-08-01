@@ -8,7 +8,7 @@ class TwoCardsPokerCheckHandsTest extends TestCase
 {
     public function testStart()
     {
-        $game = new PokerGame(['CA', 'DA'], ['C9', 'H10']);
+        $game = new TwoCardsPokerCheckHands(['CA', 'DA'], ['C9', 'H10']);
         $this->assertSame(['pair', 'straight'], $game->start());
     }
 }
