@@ -22,5 +22,5 @@ abstract class MultiPokerHandEvaluator
 
     // return $name;
 
-    abstract public function getHand();
+    abstract public function getHand(array $pokerCards);
 }

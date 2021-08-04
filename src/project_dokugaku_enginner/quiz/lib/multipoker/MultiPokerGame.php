@@ -10,7 +10,7 @@ class MultiPokerGame
 
     public function start()
     {
-        $playerCardRanks = [ ];
+        $playerCardRanks = [];
         foreach ([$this->cards1, $this->cards2] as $cards) {
             $pokerCards = array_map(fn ($card) => new PokerCard($card), $cards);
             $player = new PokerPlayer($pokerCards);
@@ -23,5 +23,6 @@ class MultiPokerGame
 
             //カード枚数が３枚だった場合、３枚のクラスを使う
 
+        }
     }
 }
