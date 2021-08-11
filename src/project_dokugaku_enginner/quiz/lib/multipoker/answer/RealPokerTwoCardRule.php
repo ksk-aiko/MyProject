@@ -29,7 +29,7 @@ class RealPokerTwoCardRule implements RealPokerRule
 
     private function isMinMax(int $cardRank1, int $cardRank2): bool
     {
-        return abs($cardRank1 - $cardRank2) === (max(PokerCard::CARD_RANK) - min(PokerCard::CARD_RANK));
+        return abs($cardRank1 - $cardRank2) === (max(RealPokerCard::CARD_RANK) - min(RealPokerCard::CARD_RANK));
     }
 
     private function isPair(int $cardRank1, int $cardRank2): bool
