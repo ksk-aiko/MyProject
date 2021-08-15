@@ -76,8 +76,11 @@ class RealPokerFiveCardRule implements RealPokerRule
 
     private function isTwoPair(array $cardRanks): bool
     {
+        $twoPairArray = ['2' => 2];
         sort($cardRanks);
         $result = array_count_values($cardRanks);
-        if (in_array())
+        $result2 = array_values($result);
+        $result3 = array_count_values($result2);
+        return $twoPairArray === $result3;
     }
 }

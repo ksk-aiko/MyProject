@@ -11,4 +11,9 @@ class RealPokerHandEvaluator
     {
         return $this->rule->getHand($pokerCards);
     }
+
+    public static function getWinner(string $hand1, string $hand2):int
+    {
+       
+    }
 }
