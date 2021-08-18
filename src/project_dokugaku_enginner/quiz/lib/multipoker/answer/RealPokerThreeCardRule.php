@@ -10,20 +10,44 @@ class RealPokerThreeCardRule implements RealPokerRule
     private const STRAIGHT = 'straight';
     private const THREE_OF_A_KIND = 'three of a kind';
 
-    public function getHand(array $pokerCards): string
+    private const HAND_RANK = [
+        self::HIGH_CARD => 1,
+        self::PAIR => 2,
+        self::STRAIGHT => 3,
+        self::THREE_OF_A_KIND => 4
+    ];
+
+    public function getHand(array $pokerCards): array
     {
         $cardRanks = array_map(fn($pokerCard) => $pokerCard->getRank(), $pokerCards);
+
+        rsort($cardRanks);
+        $primary = $cardRanks[0];
+        $secondary = $cardRanks[1];
+        $third = $cardRanks[2];
+
         $name = self::HIGH_CARD;
 
         if ($this->isThreeOfAKind($cardRanks)) {
             $name = self::THREE_OF_A_KIND;
         } elseif ($this->isStraight($cardRanks)){
             $name = self::STRAIGHT;
+            if ($cardRanks === [max($cardRanks), min($cardRanks) + 1, min($cardRanks)]) {
+                $primary = $cardRanks[1];
+                $secondary = $cardRanks[2];
+                $third = $cardRanks[0];
+            }
         } elseif ($this->isPair($cardRanks)) {
             $name = self::PAIR;
         }
 
-        return $name;
+        return [
+            'name' => $name,
+            'rank' => self::HAND_RANK[$name],
+            'primary' => $primary,
+            'secondary' => $secondary,
+            'third' => $third,
+        ];
     }
 
     private function isThreeOfAKind(array $cardRanks): bool

@@ -12,8 +12,16 @@ class RealPokerHandEvaluator
         return $this->rule->getHand($pokerCards);
     }
 
-    public static function getWinner(string $hand1, string $hand2):int
+    public static function getWinner(array $hands1, array $hands2):int
     {
-       
+       foreach (['rank', 'primary', 'secondary', 'third'] as $k) {
+            if ($hands1[$k] > $hands2[$k]) {
+                return 1;
+            } elseif ($hands1[$k] < $hands2[$k]) {
+                return 2;
+            } else {
+                return 0;
+            }
+       }
     }
 }

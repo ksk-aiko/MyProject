@@ -27,8 +27,8 @@ class RealPokerGame
             $handEvaluator = new RealPokerHandEvaluator($rule);
             $hands[] = $handEvaluator->getHand($pokerCards);
         }
-
-        return $hands;
+        $winner = RealPokerHandEvaluator::getWinner($hands[0], $hands[1]);
+        return [$hands[0]['name'], $hands[1]['name'], $winner];
     }
 
     private function getRule(array $cards): RealPokerRule
