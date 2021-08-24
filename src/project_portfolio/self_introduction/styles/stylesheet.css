@@ -4,111 +4,374 @@
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー*/
 /* ブラウザのデフォルトやユーザー設定の文字サイズが正しく反映されるようにする */
 html {
-    font-size: 100%;
+  font-size: 100%;
 }
 
 body {
-    font-family:"Yu Gothic Medium", "遊ゴシック Medium", YuGothic, "遊ゴシック体", "ヒラギノ角ゴ Pro w3", "sans-serif";
+  font-family: "Yu Gothic Medium", "遊ゴシック Medium", YuGothic, "遊ゴシック体",
+    "ヒラギノ角ゴ Pro w3", "sans-serif";
 }
 
 /* aタグの下線を消す */
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 /* 親要素より画像が大きくならないようにする */
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 /*header部分
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー*/
 /* header部分を左右に並べる */
 header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* 画面幅を調整する */
 .wrapper {
-    max-width: 1100px;
-    /* 中央に配置 */
-    margin: 0 auto;
-    /* スマホ向けのサイズ設定 */
-    padding: 0 4%;
+  max-width: 1100px;
+  /* 中央に配置 */
+  margin: 0 auto;
+  /* スマホ向けのサイズ設定 */
+  padding: 0 4%;
 }
 
 /* ロゴのサイズを調整 */
 .logo {
-    width: 210px;
-    margin-top: 14px;
+  width: 210px;
+  margin-top: 14px;
 }
 
 /* ナビメニューの配置を横並びにする */
 .main-nav {
-    display: flex;
-    font-size: 1.25rem;
-    margin-top: 34px;
-    list-style: none;
+  display: flex;
+  font-size: 1.25rem;
+  margin-top: 34px;
+  list-style: none;
 }
 
 .main-nav li {
-    margin-left: 36px;
+  margin-left: 36px;
 }
 
-.main-nav a{
-    color: #432;
+.main-nav a {
+  color: #432;
 }
 
 .main-nav a:hover {
-    color: #0bd;
+  color: #0bd;
 }
 
 /*home-content部分
 ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー*/
 
 .home-content {
-    text-align: center;
-    margin-top: 10%;
+  text-align: center;
+  margin-top: 10%;
 }
 
 .home-content p {
-    font-size: 1.125rem;
-    margin: 10px 0 42px;
+  font-size: 1.125rem;
+  margin: 10px 0 42px;
 }
 
 /*見出し
 ーーーーーーーーーーーーーーー*/
 .page-title {
-    font-size: 5rem;
-    font-family: 'Philosopher', serif;
-    text-transform: uppercase;
-    font-weight: normal;
+  font-size: 5rem;
+  font-family: "Philosopher", serif;
+  text-transform: uppercase;
+  font-weight: normal;
 }
 
 /*ボタン
 ーーーーーーーーーーーーーー*/
 .button {
-    font-size: 1.375rem;
-    background-color: #0bd;
-    color: #fff;
-    border-radius: 5px;
-    padding: 18px 32px;
+  font-size: 1.375rem;
+  background-color: #0bd;
+  color: #fff;
+  border-radius: 5px;
+  padding: 18px 32px;
 }
 
 .button:hover {
-    background: #0090aa;
+  background: #0090aa;
 }
 
 /*大きな背景画像
 ーーーーーーーーーーーーーーーーーー*/
 .big-bg {
-    background-size: cover;
-    background-position: center top;
+  background-size: cover;
+  background-position: center top;
 }
 
 #home {
-    background-image: url(../images/main-bg.jpg);
-    min-height: 100vh;
-    background-color: #0bd;
-    background-blend-mode: hard-light;
+  background-image: url(../images/main-bg.jpg),
+    linear-gradient(#c9ffbf, #ffafbd);
+  /* background-image: radial-gradient(#c9ffbf, #ffafbd); */
+  min-height: 100vh;
+  /* background-color: #0bd; */
+  background-blend-mode: luminosity;
+}
+
+/*news
+ーーーーーーーーーーーーーーーー*/
+#news {
+  background-image: url(../images/chapter5/news-bg.jpg);
+  height: 270px;
+  margin-bottom: 40px;
+}
+
+#news .page-title {
+  text-align: center;
+}
+
+/*footer
+ーーーーーーーーーーーーーーーーーー*/
+footer {
+  background-color: #432;
+  text-align: center;
+  padding: 26px 0;
+}
+
+footer p {
+  color: #fff;
+  font-size: 0.875rem;
+}
+
+/*記事部分
+ーーーーーーーーーーーーーーーーーーーー*/
+article {
+  width: 60%;
+  order: 2;
+}
+
+.news-contents {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.post-info {
+  position: relative;
+  padding-top: 4px;
+  margin-bottom: 40px;
+  display: block;
+}
+
+.post-date {
+  background: #0bd;
+  border-radius: 50%;
+  color: #fff;
+  width: 100px;
+  height: 100px;
+  font-size: 1.625rem;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  padding-top: 10px;
+}
+
+.post-date span {
+  display: block;
+  border-top: 1px rgba(255, 255, 255, 0.5) solid;
+  font-size: 1rem;
+  padding-top: 6px;
+  margin: 0 auto;
+  width: 60%;
+}
+
+.post-title {
+  font-family: "Yu Mincho", "YuMincho", serif;
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.post-title,
+.post-cat {
+  margin-left: 120px;
+}
+
+article img {
+  margin-bottom: 20px;
+}
+
+article p {
+  margin-bottom: 1rem;
+}
+
+/*サイドバー部分
+ーーーーーーーーーーーーーーーーーーーー*/
+aside {
+  width: 22%;
+  order: 3;
+}
+
+.sub-title {
+  font-size: 1.375rem;
+  border-bottom: 2px #0bd solid;
+  font-weight: normal;
+  padding: 0 8px 8px;
+}
+
+aside p {
+  padding: 12px 10px;
+}
+
+.sub-menu {
+  margin-bottom: 60px;
+  list-style: none;
+}
+
+.sub-menu li {
+  border-bottom: 1px #ddd solid;
+}
+.sub-menu a {
+  color: #432;
+  padding: 10px;
+  display: block;
+}
+.sub-menu a:hover {
+  color: #0bd;
+}
+
+.ad {
+  order: 1;
+}
+
+/*MENU
+ーーーーーーーーーーーーーーーーー*/
+#menu {
+  background-image: url(../images/menu-bg.jpg);
+  min-height: 100vh;
+}
+
+.menu-content {
+  max-width: 560px;
+  margin-top: 10%;
+}
+
+.menu-content .page-title {
+  text-align: center;
+
+}
+
+.menu-content p {
+  font-size: 1.125rem;
+  margin: 10px 0 0;
+}
+
+.grid {
+  display: grid;
+  /* grid-template-columns: repeat(3, 1fr); */
+  /* grid-template-columns: repeat(3, minmax(240px, 1fr)); */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap:26px;
+  margin-top: 6%;
+  margin-bottom: 50px;
+}
+
+.big-box {
+  grid-column: 1/3;
+  grid-row: 1/3;
+}
+
+.big-box img {
+  height: 94%;
+  width: 100%;
+  object-fit: cover;
+}
+/*モバイル版
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー*/
+@media (max-width: 600px){
+  /*共通部分
+  ーーーーーーーーーーーー*/
+  .page-title {
+    font-size: 2.5rem;
+  }
+
+  /*HEADER*/
+  .main-nav {
+    font-size: 1rem;
+    padding-top: 10px;
+  }
+
+  .main-nav li {
+    margin: 0 20px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /*HOME*/
+  .home-content {
+    margin-top: 20%;
+  }
+
+  /*NEWS*/
+  .news-contents {
+    flex-direction: column;
+  }
+
+  article,
+  aside {
+    width: 100%;
+  }
+
+  #news .page-title {
+    margin-top: 30px;
+  }
+
+  aside {
+    margin-top: 60px;
+  }
+
+  .post-info {
+    margin-bottom: 30px;
+  }
+
+  .post-date {
+    width: 70px;
+    height: 70px;
+    font-size: 1rem;
+  }
+
+  .post-date span {
+    font-size: 0.875rem;
+    padding-top: 10px;
+  }
+
+  .post-title {
+    font-size: 1.375rem;
+  }
+
+  .post-cat {
+    font-size: 0.875rem;
+    margin-top: 10px;
+  }
+
+  .post-title,
+  .post-cat {
+    margin-left: 80px;
+  }
+/*MENU
+ーーーーーーーーーーーーーーーーーー*/
+  #menu {
+    margin-top: 20%;
+  }
+
+  /*grid
+  ーーーーーーーーーーーーーーーーー*/
+  .big-box {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .big-box img {
+    height: auto;
+  }
 }
