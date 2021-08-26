@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CONTACTページ</title>
+    <meta
+      name="description"
+      content="私、愛甲啓介がどんな人物なのかを紹介するサイトです！仕事、趣味、ポートフォリオなどを記載しています"
+    />
+    <!-- cssの適用 -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&family=Philosopher:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/stylesheet.css" />
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/png" />
+  </head>
+  <body>
+    <div id="contact" class="big-bg">
+      <header class="page-header wrapper">
+        <h1>
+          <a href="./index.html"
+            ><img class="logo" src="./images/logo.svg" alt="ホーム画面"
+          /></a>
+        </h1>
+        <nav>
+          <ul class="main-nav">
+            <li><a href="./news.html">News</a></li>
+            <li><a href="./menu.html">Menu</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div class="wrapper">
+          <h2 class="page-title">CONTACT</h2>
+          <form action="#">
+              <div>
+                  <label for="name">お名前</label>
+                  <input type="text" name="your-name" id="name">
+              </div>
+              <div>
+                  <label for="email">メールアドレス</label>
+                  <input type="email" name="your-email" id="email">
+              </div>
+              <div>
+                  <label for="message">メッセージ</label>
+                  <textarea name="your-message" id="message"></textarea>
+              </div>
+              <input type="submit" value="送信" class="button">
+          </form>
+      </div>
+      </div>
+      <section id="location">
+        <div class="wrapper">
+            <div class="location-info">
+                <p>
+                    住所：熊本県熊本市南区砂原町<br>
+                    ABCDEFGマンション<br>
+                    10101010<br>
+                    電話：123-456-7890<br>
+                    営業時間：10:00~20:00<br>
+                    休日：水曜
+                </p>
+            </div>
+            <div class="location-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.474670106609!2d130.7036448152432!3d32.80618588096337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3540f40e023aca59%3A0x5e8b66c876cde430!2z54aK5pys5Z-O!5e0!3m2!1sja!2sjp!4v1629936859089!5m2!1sja!2sjp" width="800" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+      </section>
+    <footer>
+      <div class="wrapper">
+        <p><small>&copy; 2021 Keisuke aiko</small></p>
+      </div>
+    </footer>
+  </body>
+</html>
