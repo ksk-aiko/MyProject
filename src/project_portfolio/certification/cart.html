@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>カート一覧</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <h1>カート一覧</h1>
+    <div align="center">
+      <h2>Keisukeさんのカート内の商品は以下の通りです</h2>
+      <form action="complete.html">
+        <table class="menu" border="0" cellspacing="1">
+          <tr>
+            <th>商品</th>
+            <th>単価</th>
+            <th>注文数</th>
+            <th>金額</th>
+          </tr>
+          <tr>
+              <td>商品A</td>
+              <td>&yen;1000</td>
+              <td>１個</td>
+              <td>&yen;1000</td>
+          </tr>
+          <tr>
+              <td>商品C</td>
+              <td>&yen;1000</td>
+              <td>2個</td>
+              <td>&yen;2000</td>
+          </tr>
+          <tr>
+              <td>商品D</td>
+              <td>&yen;1000</td>
+              <td>１個</td>
+              <td>&yen;1000</td>
+          </tr>
+          <tr>
+              <td colspan="3" align="right">合計金額</td>
+              <td>&yen;4000</td>
+          </tr>
+        </table>
+
+        <form action="complete.html">
+            <input type="submit" value="この内容で注文する">
+        </form>
+
+        <form action="item_list.html">
+            <input type="submit" value="注文をやり直す">
+        </form>
+    </div>
+  </body>
+</html>
