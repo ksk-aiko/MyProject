@@ -108,8 +108,8 @@ header {
 }
 
 #home {
-  background-image: url(../images/main-bg.jpg),
-    linear-gradient(#c9ffbf, #ffafbd);
+  background-image: url(../images/StockSnap_CJHJOIL6SZ.jpg);
+    /* linear-gradient(#c9ffbf, #ffafbd); */
   /* background-image: radial-gradient(#c9ffbf, #ffafbd); */
   min-height: 100vh;
   /* background-color: #0bd; */
