@@ -57,7 +57,7 @@ header {
 }
 
 .main-nav a {
-  color: #432;
+  color: #fff;
 }
 
 .main-nav a:hover {
@@ -69,12 +69,13 @@ header {
 
 .home-content {
   text-align: center;
-  margin-top: 10%;
+  margin-top: 28%;
 }
 
 .home-content p {
-  font-size: 1.125rem;
+  font-size: 2.5rem;
   margin: 10px 0 42px;
+  color: rgb(235, 229, 229);
 }
 
 /*見出し
@@ -84,6 +85,7 @@ header {
   font-family: "Philosopher", serif;
   text-transform: uppercase;
   font-weight: normal;
+  color: rgb(219, 207, 207);
 }
 
 /*ボタン
@@ -244,7 +246,7 @@ aside p {
 /*MENU
 ーーーーーーーーーーーーーーーーー*/
 #menu {
-  background-image: url(../images/menu-bg.jpg);
+  background-image: url(../images/StockSnap_IVE3MHZGCO.jpg);
   min-height: 100vh;
 }
 
@@ -255,12 +257,15 @@ aside p {
 
 .menu-content .page-title {
   text-align: center;
-
+  color: #fff;
+  font-size: 5rem;
 }
 
-.menu-content p {
-  font-size: 1.125rem;
+.menu-content h3{
+  font-size: 2.0rem;
   margin: 10px 0 0;
+  color: #fff;
+  text-align: center;
 }
 
 .grid {
