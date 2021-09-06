@@ -31,18 +31,19 @@ class PokerThreeCardRule implements PokerRule
         return count(array_unique($cardRanks)) === 1;
     }
 
-    private function isStraight(int $cardRank1, int $cardRank2): bool
+    private function isStraight($cardRanks): bool
     {
-        return abs($cardRank1 - $cardRank2) === 1 || $this->isMinMax($cardRank1, $cardRank2);
+        sort($cardRanks);
+        return range($cardRanks[0], $cardRanks[0] + count($cardRanks) - 1) === $cardRanks || $this->isMinMax($cardRanks);
     }
 
-    private function isMinMax(int $cardRank1, int $cardRank2): boolval
+    private function isMinMax(array $cardRanks): bool
     {
-        return abs($cardRank1 - $cardRank2) === (max(PokerCard::CARD_RANK) - min(PokerCard::CARD_RANK));
+        return $cardRanks === [min(PokerCard::CARD_RANK), min(PokerCard::CARD_RANK) + 1, max(PokerCard::CARD_RANK)];
     }
 
-    private function isPair(int $cardRank1, int $cardRank2): bool
+    private function isPair(array $cardRanks): bool
     {
-        return $cardRank1 === $cardRank2;
+        return count(array_unique($cardRanks)) === 2;
     }
 }

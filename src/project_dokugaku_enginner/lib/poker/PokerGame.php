@@ -15,11 +15,14 @@ class PokerGame
 
     public function start(): array
     {
-        $hands = [ ];
+        $hands = [];
         foreach ([$this->cards1, $this->cards2] as $cards) {
             $pokerCards = array_map(fn ($card) => new PokerCard($card), $cards);
             $rule = $this->getRule($cards);
+            $handEvaluator = new PokerHandEvaluator($rule);
+            $hands[] = $handEvaluator->getHand($pokerCards);
         }
+        return $hands;
     }
 
     private function getRule(array $cards): PokerRule
