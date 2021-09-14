@@ -18,6 +18,8 @@ class BlackJack
         $remainCards = $player->drawCard();
         $dealer = new Dealer($remainCards);
         $dealer->drawCard();
+        $player->displayScore();
+
         
     }
 

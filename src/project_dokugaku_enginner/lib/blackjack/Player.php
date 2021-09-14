@@ -22,4 +22,13 @@ class Player implements Participant
         return $cards;
 
     }
+
+    public function displayScore(string $card1, string $card2): int
+    {
+        $key1 = substr($card1, 1, strlen($card1) - 1);
+        $key2 = substr($card2, 1, strlen($card1) - 1);
+        $score = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
+        echo "あなたの現在の得点は{$score}です";
+        return $score;
+    }
 }
