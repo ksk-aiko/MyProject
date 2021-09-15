@@ -18,5 +18,6 @@ class Dealer implements Participant
         $this->card2 = array_shift($this->cards);
         echo "ディーラーの引いたカードは{$this->card1}です" . PHP_EOL;
         echo "ディーラーの引いたもう一枚のカードは分かりません" . PHP_EOL;
+        return $this->cards;
     }
 }

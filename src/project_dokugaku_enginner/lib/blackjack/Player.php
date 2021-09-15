@@ -26,9 +26,27 @@ class Player implements Participant
     public function displayScore(string $card1, string $card2): int
     {
         $key1 = substr($card1, 1, strlen($card1) - 1);
-        $key2 = substr($card2, 1, strlen($card1) - 1);
+        $key2 = substr($card2, 1, strlen($card2) - 1);
         $score = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
-        echo "あなたの現在の得点は{$score}です";
+        echo "あなたの現在の得点は{$score}点です" . PHP_EOL;
         return $score;
+    }
+
+    public function addCard(array $remainCards, int $score)
+    {
+        echo 'カードを引きますか(Y/N):';
+        $stdin = trim(fgets(STDIN));
+        if ($stdin === 'Y' || $stdin === 'y') {
+            shuffle($remainCards);
+            $card = array_shift($remainCards);
+            echo "あなたの引いたカードは{$card}です" . PHP_EOL;
+            $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
+            echo "あなたの現在の得点は{$score}点です" . PHP_EOL;
+            
+        } elseif ($stdin === 'N' || $stdin === 'n') {
+
+        } else {
+            echo '正しい文字を入力してください' . PHP_EOL;
+        }
     }
 }
