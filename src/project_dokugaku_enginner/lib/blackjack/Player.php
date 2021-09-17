@@ -9,18 +9,17 @@ class Player implements Participant
     {
     }
 
-    public function drawCard():array
+    public function drawCard(): array
     {
         $card = new Card();
         $cards = $card->cards;
         shuffle($cards);
         $this->card1 = array_shift($cards);
-        echo "あなたの引いたカードは{$this->card1}です". PHP_EOL;
+        echo "あなたの引いたカードは{$this->card1}です" . PHP_EOL;
         shuffle($cards);
         $this->card2 = array_shift($cards);
-        echo "あなたの引いたカードは{$this->card2}です". PHP_EOL;
+        echo "あなたの引いたカードは{$this->card2}です" . PHP_EOL;
         return $cards;
-
     }
 
     public function displayScore(string $card1, string $card2): int
@@ -34,19 +33,26 @@ class Player implements Participant
 
     public function addCard(array $remainCards, int $score)
     {
-        echo 'カードを引きますか(Y/N):';
-        $stdin = trim(fgets(STDIN));
-        if ($stdin === 'Y' || $stdin === 'y') {
-            shuffle($remainCards);
-            $card = array_shift($remainCards);
-            echo "あなたの引いたカードは{$card}です" . PHP_EOL;
-            $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
+        $stdin = '';
+        while ($score <= 21) {
+            echo 'カードを引きますか(Y/N):';
+            $stdin = trim(fgets(STDIN));
+            if ($stdin === 'Y' || $stdin === 'y') {
+                shuffle($remainCards);
+                $card = array_shift($remainCards);
+                echo "あなたの引いたカードは{$card}です" . PHP_EOL;
+                $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
+            } elseif ($stdin === 'N' || $stdin === 'n') {
+                break;
+            } else {
+                echo '正しい文字を入力してください' . PHP_EOL;
+            }
             echo "あなたの現在の得点は{$score}点です" . PHP_EOL;
-            
-        } elseif ($stdin === 'N' || $stdin === 'n') {
-
+        }
+        if ($score > 22) {
+            echo 'ゲームオーバーです' . PHP_EOL;
         } else {
-            echo '正しい文字を入力してください' . PHP_EOL;
+            echo 'ディーラーのターンに入ります' . PHP_EOL;
         }
     }
 }
