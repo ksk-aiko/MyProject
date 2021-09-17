@@ -11,7 +11,7 @@
     },
     "scripts":{
         "phpunit":"./vendor/bin/phpunit ",
-        "phpcs":"./vendor/bin/phpcs --standard=PSR12 --colors",
+        "phpcs":"./vendor/bin/phpcs  --standard=PSR12 --colors",
         "phpstan":"./vendor/bin/phpstan analyse --ansi",
         "phpmd":"./vendor/bin/phpmd"
     }
