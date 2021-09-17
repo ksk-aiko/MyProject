@@ -2,6 +2,7 @@
 
 require_once('Participant.php');
 require_once('Card.php');
+require_once('BlackJack.php');
 
 class Player implements Participant
 {
@@ -31,7 +32,7 @@ class Player implements Participant
         return $score;
     }
 
-    public function addCard(array $remainCards, int $score)
+    public function addCard(array $remainCards, int $score): array
     {
         $stdin = '';
         while ($score <= 21) {
@@ -49,10 +50,7 @@ class Player implements Participant
             }
             echo "あなたの現在の得点は{$score}点です" . PHP_EOL;
         }
-        if ($score > 22) {
-            echo 'ゲームオーバーです' . PHP_EOL;
-        } else {
-            echo 'ディーラーのターンに入ります' . PHP_EOL;
-        }
+
+        return [$remainCards, $score];
     }
 }
