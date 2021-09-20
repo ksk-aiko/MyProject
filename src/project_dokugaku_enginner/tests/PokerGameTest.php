@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require_once(__DIR__ . '/../../lib/poker/PokerGame.php');
+require_once(__DIR__ . '/../lib/poker/PokerGame.php');
 
 class PokerGameTest extends TestCase
 {

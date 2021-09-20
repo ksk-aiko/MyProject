@@ -8,7 +8,6 @@ class BlackJackTest extends TestCase
 {
     public function testStart()
     {
-        $player = new Player();
-        $this->assertSame('');
+        
     }
 }

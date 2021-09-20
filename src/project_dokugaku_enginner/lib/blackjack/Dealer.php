@@ -1,10 +1,16 @@
 <?php
 
+namespace BlackJack;
+
 require_once('Participant.php');
 require_once('Player.php');
 
 class Dealer implements Participant
 {
+    public array $cards;
+    public string $card1;
+    public string $card2;
+
     public function __construct(array $remainCards)
     {
         $this->cards = $remainCards;

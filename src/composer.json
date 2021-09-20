@@ -10,9 +10,9 @@
         "phpmd/phpmd" : "@stable"
     },
     "scripts":{
-        "phpunit":"./vendor/bin/phpunit ",
-        "phpcs":"./vendor/bin/phpcs  --standard=PSR12 --colors",
-        "phpstan":"./vendor/bin/phpstan analyse --ansi",
-        "phpmd":"./vendor/bin/phpmd"
+        "phpunit":"./vendor/bin/phpunit project_dokugaku_enginner/tests",
+        "phpcs":"./vendor/bin/phpcs  --standard=PSR12 --colors project_dokugaku_enginner/lib/blackjack",
+        "phpstan":"./vendor/bin/phpstan analyse --ansi project_dokugaku_enginner/lib/blackjack",
+        "phpmd":"./vendor/bin/phpmd project_dokugaku_enginner/lib/blackjack ansi cleancode, codesize, controversial, design, naming, unusedcode"
     }
 }

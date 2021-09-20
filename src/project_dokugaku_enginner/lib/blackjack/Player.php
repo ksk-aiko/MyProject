@@ -1,11 +1,16 @@
 <?php
 
+namespace BlackJack;
+
 require_once('Participant.php');
 require_once('Card.php');
 require_once('BlackJack.php');
 
 class Player implements Participant
 {
+    public string $card1;
+    public string $card2;
+
     public function __construct()
     {
     }
@@ -45,9 +50,9 @@ class Player implements Participant
                 $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
             } elseif ($stdin === 'N' || $stdin === 'n') {
                 break;
-            } else {
-                echo '正しい文字を入力してください' . PHP_EOL;
             }
+            echo '正しい文字を入力してください' . PHP_EOL;
+
             echo "あなたの現在の得点は{$score}点です" . PHP_EOL;
         }
 
