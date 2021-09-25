@@ -44,9 +44,36 @@ class Dealer implements Participant
             shuffle($remainCards);
             $card = array_shift($remainCards);
             echo "ディーラーの引いたカードは{$card}です" . PHP_EOL;
-            $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
+            if ($this->isAce($card)) {
+                $scoreOfAce = $this->determineAceScore($score);
+                $score += $scoreOfAce;
+            } else {
+                $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
+            }
             echo "ディーラーの現在の得点は{$score}点です" . PHP_EOL;
         }
         return $score;
+    }
+
+    private function isAce(string $card): bool
+    {
+        $cardNumber = (int) substr($card, 1, strlen($card) - 1);
+
+        if ($cardNumber === 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private function determineAceScore(int $score): int
+    {
+        if ($score <= 11) {
+            $scoreOfAce = 10;
+        } else {
+            $scoreOfAce = 1;
+        }
+
+        return $scoreOfAce;
     }
 }

@@ -11,6 +11,7 @@ class Player implements Participant
     public string $card1;
     public string $card2;
 
+
     public function __construct()
     {
     }
@@ -47,15 +48,47 @@ class Player implements Participant
                 shuffle($remainCards);
                 $card = array_shift($remainCards);
                 echo "あなたの引いたカードは{$card}です" . PHP_EOL;
-                $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
+                if ($this->isAce($card)) {
+                    $scoreOfAce = $this->chooseAceScore();
+                    $score += $scoreOfAce;
+                } else {
+                    $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
+                }
             } elseif ($stdin === 'N' || $stdin === 'n') {
                 break;
+            } else {
+                echo '正しい文字を入力してください' . PHP_EOL;
             }
-            echo '正しい文字を入力してください' . PHP_EOL;
 
             echo "あなたの現在の得点は{$score}点です" . PHP_EOL;
         }
 
         return [$remainCards, $score];
+    }
+
+    public function isAce(string $card): bool
+    {
+        $cardNumber = (int) substr($card, 1, strlen($card) - 1);
+
+        if ($cardNumber === 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private function chooseAceScore(): int
+    {
+        echo 'Aの点数を選んでください(1or10):';
+        $stdin = (int) trim(fgets(STDIN));
+        if ($stdin === 1) {
+            $scoreOfAce = 1;
+        } elseif ($stdin === 10) {
+            $scoreOfAce = 10;
+        } else {
+            '正しい数字を入力してください';
+        }
+
+        return $scoreOfAce;
     }
 }

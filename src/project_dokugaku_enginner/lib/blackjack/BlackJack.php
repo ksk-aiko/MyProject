@@ -27,9 +27,9 @@ class BlackJack
             $scoreOfDealer = $dealer->displayScore($dealer->card1, $dealer->card2);
             $scoreOfDealer = $dealer->addCard($remainCards, $scoreOfDealer);
             $this->judge($scoreOfPlayer, $scoreOfDealer);
+        } else {
+            echo 'ディーラーの勝ちです...' . PHP_EOL;
         }
-        echo 'ディーラーの勝ちです' . PHP_EOL;
-        echo 'ブラックジャックを終了します' . PHP_EOL;
     }
 
     private function judge(int $scoreOfPlayer, int $scoreOfDealer): void
@@ -39,9 +39,10 @@ class BlackJack
         } elseif ($scoreOfPlayer > $scoreOfDealer) {
             echo 'あなたの勝ちです！' . PHP_EOL;
         } elseif ($scoreOfPlayer < $scoreOfDealer) {
-            echo 'ディーラーの勝ちです' . PHP_EOL;
+            echo 'ディーラーの勝ちです...' . PHP_EOL;
+        } else {
+            echo '引き分けです' . PHP_EOL;
         }
-        echo '引き分けです' . PHP_EOL;
 
         echo 'ブラックジャックを終了します' . PHP_EOL;
     }
