@@ -2,11 +2,10 @@
 
 namespace BlackJack;
 
-require_once('Participant.php');
 require_once('Card.php');
 require_once('BlackJack.php');
 
-class Player implements Participant
+class Player
 {
     public string $card1;
     public string $card2;
