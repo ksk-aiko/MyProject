@@ -1,9 +1,9 @@
 <?php
 
-namespace BlackJack;
-
 require_once('Player.php');
 require_once('Dealer.php');
+require_once('DecideNumber.php');
+require_once('OnePlayer.php');
 
 
 class BlackJack
@@ -15,11 +15,11 @@ class BlackJack
     public function start()
     {
         echo 'ブラックジャックを開始します' . PHP_EOL;
-        $player = new Player();
+        $player = new DecideNumber(new OnePlayer(new ManualPlayer()));
         $remainCards = $player->drawCard();
         $dealer = new Dealer($remainCards);
         $remainCards = $dealer->drawCard();
-        $scoreOfPlayer = $player->displayScore($player->card1, $player->card2);
+        $scoreOfPlayer = $player->displayScore();
         $cardsAndScore = $player->addCard($remainCards, $scoreOfPlayer);
         $remainCards = $cardsAndScore[0];
         $scoreOfPlayer = $cardsAndScore[1];

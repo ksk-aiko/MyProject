@@ -1,7 +1,5 @@
 <?php
 
-namespace BlackJack;
-
 class Card
 {
     public const CARD_SCORES = [

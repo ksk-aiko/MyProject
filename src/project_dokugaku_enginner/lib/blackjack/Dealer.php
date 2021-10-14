@@ -1,7 +1,5 @@
 <?php
 
-namespace BlackJack;
-
 require_once('Participant.php');
 require_once('Player.php');
 
