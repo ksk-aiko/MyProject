@@ -21,8 +21,8 @@ class OnePlayer implements Participant
         return $this->player->displayScore($this->player->card1, $this->player->card2);
     }
 
-    public function addCard()
+    public function addCard(array $remainCards, int $score)
     {
-        $this->player->addCard($this->player->remainCards, $this->player->score);
+        return $this->player->addCard($remainCards, $score);
     }
 }

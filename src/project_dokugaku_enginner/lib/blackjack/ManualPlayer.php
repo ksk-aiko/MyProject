@@ -4,15 +4,15 @@ require_once('Card.php');
 
 class ManualPlayer implements Player
 {
-
+    public string $name;
     public string $card1;
     public string $card2;
     public array $remainCards;
     public int $score;
 
-    public function __construct()
+    public function __construct(string $name)
     {
-        
+        $this->name = $name;
     }
 
     public function drawCard(): array
@@ -30,8 +30,8 @@ class ManualPlayer implements Player
 
     public function displayScore(string $card1, string $card2): int
     {
-        $key1 = substr($card1, 1, strlen($card1) - 1);
-        $key2 = substr($card2, 1, strlen($card2) - 1);
+        $key1 = mb_substr($card1, 1, mb_strlen($card1) - 1);
+        $key2 = mb_substr($card2, 1, mb_strlen($card2) - 1);
         $score = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
         echo "あなたの現在の得点は{$score}点です" . PHP_EOL;
         return $score;

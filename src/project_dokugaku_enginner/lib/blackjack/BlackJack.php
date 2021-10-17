@@ -4,6 +4,8 @@ require_once('Player.php');
 require_once('Dealer.php');
 require_once('DecideNumber.php');
 require_once('OnePlayer.php');
+require_once('TwoPlayerProcess.php');
+require_once('TwoPlayer.php');
 
 
 class BlackJack
@@ -15,20 +17,29 @@ class BlackJack
     public function start()
     {
         echo 'ブラックジャックを開始します' . PHP_EOL;
-        $player = new DecideNumber(new OnePlayer(new ManualPlayer()));
-        $remainCards = $player->drawCard();
-        $dealer = new Dealer($remainCards);
-        $remainCards = $dealer->drawCard();
-        $scoreOfPlayer = $player->displayScore();
-        $cardsAndScore = $player->addCard($remainCards, $scoreOfPlayer);
-        $remainCards = $cardsAndScore[0];
-        $scoreOfPlayer = $cardsAndScore[1];
-        if ($scoreOfPlayer <= 21) {
-            $scoreOfDealer = $dealer->displayScore($dealer->card1, $dealer->card2);
-            $scoreOfDealer = $dealer->addCard($remainCards, $scoreOfDealer);
-            $this->judge($scoreOfPlayer, $scoreOfDealer);
-        } else {
-            echo 'ディーラーの勝ちです...' . PHP_EOL;
+        echo '参加人数は何人ですか？：';
+        $stdin = (int) trim(fgets(STDIN));
+        if ($stdin === 1) {
+            $player = new DecideNumber(new OnePlayer(new ManualPlayer('あなた')));
+            $remainCards = $player->drawCard();
+            $dealer = new Dealer($remainCards);
+            $remainCards = $dealer->drawCard();
+            $scoreOfPlayer = $player->displayScore();
+            $player->remainCards = $remainCards;
+            $player->score = $scoreOfPlayer;
+            $cardsAndScore = $player->addCard($remainCards, $scoreOfPlayer);
+            $remainCards = $cardsAndScore[0];
+            $scoreOfPlayer = $cardsAndScore[1];
+            if ($scoreOfPlayer <= 21) {
+                $scoreOfDealer = $dealer->displayScore($dealer->card1, $dealer->card2);
+                $scoreOfDealer = $dealer->addCard($remainCards, $scoreOfDealer);
+                $this->judge($scoreOfPlayer, $scoreOfDealer);
+            } else {
+                echo 'ディーラーの勝ちです...' . PHP_EOL;
+            }
+        } elseif ($stdin === 2) {
+            $twoPlayer = new TwoPlayerProcess();
+            $twoPlayer->twoPlayerProcess();
         }
     }
 
@@ -46,4 +57,6 @@ class BlackJack
 
         echo 'ブラックジャックを終了します' . PHP_EOL;
     }
+
+    
 }

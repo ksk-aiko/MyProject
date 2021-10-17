@@ -6,6 +6,8 @@ class DecideNumber
 {
     public string $card1;
     public string $card2;
+    public array $remainCards;
+    public int $score;
     
     public function __construct(Participant $player )
     {
@@ -23,8 +25,8 @@ class DecideNumber
         return $this->player->displayScore();
     }
 
-    public function addCard(): array
+    public function addCard(array $remainCards, int $score): array
     {
-        return $this->player->addCard();
+        return $this->player->addCard($remainCards, $score);
     }
 }
