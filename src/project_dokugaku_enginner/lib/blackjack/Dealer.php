@@ -8,6 +8,7 @@ class Dealer implements Participant
     public array $cards;
     public string $card1;
     public string $card2;
+    public int $score;
 
     public function __construct(array $remainCards)
     {
@@ -27,12 +28,13 @@ class Dealer implements Participant
 
     public function displayScore(string $card1, string $card2): int
     {
-        echo 'ディーラーのターンに入ります' . PHP_EOL;
+        // echo 'ディーラーのターンに入ります' . PHP_EOL;
         echo "ディーラーの引いた２枚目のカードは{$this->card2}でした" . PHP_EOL;
         $key1 = substr($card1, 1, strlen($card1) - 1);
         $key2 = substr($card2, 1, strlen($card2) - 1);
         $score = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
         echo "ディーラーの現在の得点は{$score}点です" . PHP_EOL;
+        $this->score = $score;
         return $score;
     }
 
@@ -50,6 +52,7 @@ class Dealer implements Participant
             }
             echo "ディーラーの現在の得点は{$score}点です" . PHP_EOL;
         }
+        $this->score = $score;
         return $score;
     }
 

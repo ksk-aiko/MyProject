@@ -57,7 +57,7 @@ class TwoPlayer implements Participant
 
     public function addCardOfPlayer2(array $remainCards, int $score)
     {
-        $this->player2->addCard($remainCards, $score);
+        return $this->player2->addCard($remainCards, $score);
     }
 
 }

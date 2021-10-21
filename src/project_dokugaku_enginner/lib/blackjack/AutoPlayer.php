@@ -5,6 +5,7 @@ class AutoPlayer implements Player
     public string $name;
     public string $card1;
     public string $card2;
+    public int $score;
 
     public function __construct(string $name)
     {
@@ -28,6 +29,7 @@ class AutoPlayer implements Player
         $key2 = substr($card2, 1, strlen($card2) - 1);
         $score = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
         echo "プレイヤー２の現在の得点は{$score}点です" . PHP_EOL;
+        $this->score = $score;
         return $score;
     }
 

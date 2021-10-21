@@ -39,11 +39,27 @@ class BlackJack
             }
         } elseif ($stdin === 2) {
             $twoPlayer = new TwoPlayerProcess();
-            $twoPlayer->twoPlayerProcess();
+            $remainCardsAndScoreOfPlayer2 = $twoPlayer->twoPlayerProcess();
+            
         }
     }
 
     private function judge(int $scoreOfPlayer, int $scoreOfDealer): void
+    {
+        if ($scoreOfDealer >= 22) {
+            echo 'あなたの勝ちです！' . PHP_EOL;
+        } elseif ($scoreOfPlayer > $scoreOfDealer) {
+            echo 'あなたの勝ちです！' . PHP_EOL;
+        } elseif ($scoreOfPlayer < $scoreOfDealer) {
+            echo 'ディーラーの勝ちです...' . PHP_EOL;
+        } else {
+            echo '引き分けです' . PHP_EOL;
+        }
+
+        echo 'ブラックジャックを終了します' . PHP_EOL;
+    }
+
+    private function judgeTwoPlayer(int $scoreOfPlayer1, int $scoreOfPlayer2, int $scoreOfDealer): void
     {
         if ($scoreOfDealer >= 22) {
             echo 'あなたの勝ちです！' . PHP_EOL;
