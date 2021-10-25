@@ -6,6 +6,8 @@ require_once('DecideNumber.php');
 require_once('OnePlayer.php');
 require_once('TwoPlayerProcess.php');
 require_once('TwoPlayer.php');
+require_once('ThreePlayerProcess.php');
+require_once('ThreePlayer.php');
 
 
 class BlackJack
@@ -35,12 +37,16 @@ class BlackJack
                 $scoreOfDealer = $dealer->addCard($remainCards, $scoreOfDealer);
                 $this->judge($scoreOfPlayer, $scoreOfDealer);
             } else {
-                echo 'ディーラーの勝ちです...' . PHP_EOL;
+                echo 'ディーラーの勝ちです' . PHP_EOL;
             }
         } elseif ($stdin === 2) {
             $twoPlayer = new TwoPlayerProcess();
-            $remainCardsAndScoreOfPlayer2 = $twoPlayer->twoPlayerProcess();
-            
+            $twoPlayer->twoPlayerProcess();
+        } elseif ($stdin === 3) {
+            $threePlayer = new ThreePlayerProcess();
+            $threePlayer->threePlayerProcess();
+        } else {
+            echo '正しい数字を入力してください' . PHP_EOL;
         }
     }
 
@@ -51,22 +57,7 @@ class BlackJack
         } elseif ($scoreOfPlayer > $scoreOfDealer) {
             echo 'あなたの勝ちです！' . PHP_EOL;
         } elseif ($scoreOfPlayer < $scoreOfDealer) {
-            echo 'ディーラーの勝ちです...' . PHP_EOL;
-        } else {
-            echo '引き分けです' . PHP_EOL;
-        }
-
-        echo 'ブラックジャックを終了します' . PHP_EOL;
-    }
-
-    private function judgeTwoPlayer(int $scoreOfPlayer1, int $scoreOfPlayer2, int $scoreOfDealer): void
-    {
-        if ($scoreOfDealer >= 22) {
-            echo 'あなたの勝ちです！' . PHP_EOL;
-        } elseif ($scoreOfPlayer > $scoreOfDealer) {
-            echo 'あなたの勝ちです！' . PHP_EOL;
-        } elseif ($scoreOfPlayer < $scoreOfDealer) {
-            echo 'ディーラーの勝ちです...' . PHP_EOL;
+            echo 'ディーラーの勝ちです' . PHP_EOL;
         } else {
             echo '引き分けです' . PHP_EOL;
         }

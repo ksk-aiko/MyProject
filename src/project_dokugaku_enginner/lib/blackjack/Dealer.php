@@ -50,6 +50,9 @@ class Dealer implements Participant
             } else {
                 $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
             }
+            if ($score >= 22) {
+                echo '点数が21点を超えました。ディーラーはゲームオーバーです。' . PHP_EOL;
+            }
             echo "ディーラーの現在の得点は{$score}点です" . PHP_EOL;
         }
         $this->score = $score;

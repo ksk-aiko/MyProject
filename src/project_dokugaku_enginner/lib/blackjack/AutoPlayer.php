@@ -16,10 +16,10 @@ class AutoPlayer implements Player
     {
         shuffle($remainCards);
         $this->card1 = array_shift($remainCards);
-        echo "プレイヤー２の引いたカードは{$this->card1}です" . PHP_EOL;
+        echo "{$this->name}の引いたカードは{$this->card1}です" . PHP_EOL;
         shuffle($remainCards);
         $this->card2 = array_shift($remainCards);
-        echo "プレイヤー２の引いたカードは{$this->card2}です" . PHP_EOL;
+        echo "{$this->name}の引いたカードは{$this->card2}です" . PHP_EOL;
         return $remainCards;
     }
 
@@ -28,7 +28,7 @@ class AutoPlayer implements Player
         $key1 = substr($card1, 1, strlen($card1) - 1);
         $key2 = substr($card2, 1, strlen($card2) - 1);
         $score = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
-        echo "プレイヤー２の現在の得点は{$score}点です" . PHP_EOL;
+        echo "{$this->name}の現在の得点は{$score}点です" . PHP_EOL;
         $this->score = $score;
         return $score;
     }
@@ -36,17 +36,21 @@ class AutoPlayer implements Player
     public function addCard(array $remainCards, int $score): array
     {
         while ($score < 17) {
-            echo 'プレイヤー２のターンです' . PHP_EOL;
+            echo "{$this->name}がカードを引きます" . PHP_EOL;
             shuffle($remainCards);
             $card = array_shift($remainCards);
-            echo "プレイヤー２の引いたカードは{$card}です" . PHP_EOL;
+            echo "{$this->name}の引いたカードは{$card}です" . PHP_EOL;
             if ($this->isAce($card)) {
                 $scoreOfAce = $this->determineAceScore($score);
                 $score += $scoreOfAce;
             } else {
                 $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
             }
-            echo "プレイヤー２の現在の得点は{$score}点です" . PHP_EOL;
+            if ($score >= 22) {
+                echo "点数が21点を超えました。{$this->name}はゲームオーバーです。" . PHP_EOL;
+            } else {
+                echo "{$this->name}の現在の得点は{$score}点です" . PHP_EOL;
+            }
         }
         return [$remainCards, $score];
     }

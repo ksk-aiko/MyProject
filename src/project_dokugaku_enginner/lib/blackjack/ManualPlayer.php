@@ -58,8 +58,11 @@ class ManualPlayer implements Player
             } else {
                 echo '正しい文字を入力してください' . PHP_EOL;
             }
-
-            echo "あなたの現在の得点は{$score}点です" . PHP_EOL;
+            if ($score >= 22) {
+                echo '点数が21点を超えました。あなたはゲームオーバーです。' . PHP_EOL;
+            } else {
+                echo "あなたの現在の得点は{$score}点です" . PHP_EOL;
+            }
         }
 
         return [$remainCards, $score];
