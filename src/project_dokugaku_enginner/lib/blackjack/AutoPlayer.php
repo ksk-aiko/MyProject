@@ -1,5 +1,7 @@
 <?php
 
+namespace BlackJack;
+
 class AutoPlayer implements Player
 {
     public string $name;

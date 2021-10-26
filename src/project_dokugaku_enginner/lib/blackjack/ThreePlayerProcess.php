@@ -1,5 +1,7 @@
 <?php
 
+namespace BlackJack;
+
 require_once('ManualPlayer.php');
 require_once('AutoPlayer.php');
 require_once('TwoPlayer.php');
@@ -10,7 +12,7 @@ class ThreePlayerProcess
     {
     }
 
-    public function ThreePlayerProcess()
+    public function threePlayerProcess()
     {
         $player1 = new ManualPlayer('あなた');
         $player2 = new AutoPlayer('プレイヤー２');
@@ -22,12 +24,11 @@ class ThreePlayerProcess
         $dealer->drawCard();
         $scoreOfPlayer1 = $threePlayer->displayScoreOfPlayer1($cardsOfThreePlayer[0], $cardsOfThreePlayer[1]);
         $scoreOfPlayer2 = $threePlayer->displayScoreOfPlayer2($cardsOfThreePlayer[2], $cardsOfThreePlayer[3]);
-        $scoreOfPlayer3 = 
-        $threePlayer->displayScoreOfPlayer3($cardsOfThreePlayer[4], $cardsOfThreePlayer[5]);
+        $scoreOfPlayer3 =
+            $threePlayer->displayScoreOfPlayer3($cardsOfThreePlayer[4], $cardsOfThreePlayer[5]);
         $cardsAndScoreOfPlayer1 = $threePlayer->addCardOfPlayer1($cardsOfThreePlayer[6], $scoreOfPlayer1);
         $remainCardsAndScoreOfPlayer2 = $threePlayer->addCardOfPlayer2($cardsAndScoreOfPlayer1[0], $scoreOfPlayer2);
-        $cardsAndScoreOfPlayer3 = $threePlayer->addCardOfPlayer3
-        ($remainCardsAndScoreOfPlayer2[0], $scoreOfPlayer3);
+        $cardsAndScoreOfPlayer3 = $threePlayer->addCardOfPlayer3($remainCardsAndScoreOfPlayer2[0], $scoreOfPlayer3);
 
         $dealer->displayScore($dealer->card1, $dealer->card2);
         $dealer->addCard($cardsAndScoreOfPlayer3[0], $dealer->score);
@@ -48,7 +49,6 @@ class ThreePlayerProcess
         if (count(array_unique($filterScores)) === 1) {
             echo '今回の勝負は引き分けです' . PHP_EOL;
         } else {
-
             foreach ($filterScores as $key => $value) {
                 $firstKey = $key;
                 break;

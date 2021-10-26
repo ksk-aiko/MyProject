@@ -1,5 +1,7 @@
 <?php
 
+namespace BlackJack;
+
 require_once('ManualPlayer.php');
 require_once('AutoPlayer.php');
 require_once('TwoPlayer.php');
@@ -47,7 +49,6 @@ class TwoPlayerProcess
                 }
                 echo "{$firstKey}の勝ちです！" . PHP_EOL;
             }
-
         } else {
             echo '今回の勝負は引き分けです' . PHP_EOL;
         }

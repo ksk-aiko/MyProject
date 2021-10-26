@@ -1,5 +1,7 @@
 <?php
 
+namespace BlackJack;
+
 require_once('Player.php');
 
 class TwoPlayer implements Participant
@@ -59,5 +61,4 @@ class TwoPlayer implements Participant
     {
         return $this->player2->addCard($remainCards, $score);
     }
-
 }
