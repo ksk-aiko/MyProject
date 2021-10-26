@@ -28,9 +28,8 @@ class OnePlayerProcess
             $scoreOfDealer = $dealer->displayScore($dealer->card1, $dealer->card2);
             $scoreOfDealer = $dealer->addCard($remainCards, $scoreOfDealer);
             $this->judge($scoreOfPlayer, $scoreOfDealer);
-        } else {
-            echo 'ディーラーの勝ちです' . PHP_EOL;
         }
+        echo 'ディーラーの勝ちです' . PHP_EOL;
     }
 
     private function judge(int $scoreOfPlayer, int $scoreOfDealer): void
@@ -41,9 +40,9 @@ class OnePlayerProcess
             echo 'あなたの勝ちです！' . PHP_EOL;
         } elseif ($scoreOfPlayer < $scoreOfDealer) {
             echo 'ディーラーの勝ちです' . PHP_EOL;
-        } else {
-            echo '今回の勝負は引き分けです' . PHP_EOL;
         }
+        echo '今回の勝負は引き分けです' . PHP_EOL;
+
 
         echo 'ブラックジャックを終了します' . PHP_EOL;
     }

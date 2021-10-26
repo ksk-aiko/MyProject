@@ -48,12 +48,11 @@ class ThreePlayerProcess
         $filterScores = array_filter($scores, fn ($score) => $score < 22);
         if (count(array_unique($filterScores)) === 1) {
             echo '今回の勝負は引き分けです' . PHP_EOL;
-        } else {
-            foreach ($filterScores as $key => $value) {
-                $firstKey = $key;
-                break;
-            }
-            echo "{$firstKey}の勝ちです！" . PHP_EOL;
         }
+        foreach ($filterScores as $key => $value) {
+            $firstKey = $key;
+            break;
+        }
+        echo "{$firstKey}の勝ちです！" . PHP_EOL;
     }
 }

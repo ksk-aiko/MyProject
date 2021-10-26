@@ -49,14 +49,13 @@ class Dealer implements Participant
             if ($this->isAce($card)) {
                 $scoreOfAce = $this->determineAceScore($score);
                 $score += $scoreOfAce;
-            } else {
-                $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
             }
+            $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
+
             if ($score >= 22) {
                 echo '点数が21点を超えました。ディーラーはゲームオーバーです。' . PHP_EOL;
-            } else {
-                echo "ディーラーの現在の得点は{$score}点です" . PHP_EOL;
             }
+            echo "ディーラーの現在の得点は{$score}点です" . PHP_EOL;
         }
         $this->score = $score;
         return $score;
@@ -68,18 +67,17 @@ class Dealer implements Participant
 
         if ($cardNumber === 1) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     private function determineAceScore(int $score): int
     {
         if ($score <= 11) {
             $scoreOfAce = 10;
-        } else {
-            $scoreOfAce = 1;
         }
+        $scoreOfAce = 1;
+
 
         return $scoreOfAce;
     }

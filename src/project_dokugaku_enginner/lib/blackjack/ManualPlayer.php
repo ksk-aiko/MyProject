@@ -52,19 +52,17 @@ class ManualPlayer implements Player
                 if ($this->isAce($card)) {
                     $scoreOfAce = $this->chooseAceScore();
                     $score += $scoreOfAce;
-                } else {
-                    $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
                 }
+                $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
             } elseif ($stdin === 'N' || $stdin === 'n') {
                 break;
-            } else {
-                echo '正しい文字を入力してください' . PHP_EOL;
             }
+            echo '正しい文字を入力してください' . PHP_EOL;
+
             if ($score >= 22) {
                 echo "点数が21点を超えました。{$this->name}はゲームオーバーです。'" . PHP_EOL;
-            } else {
-                echo "{$this->name}の現在の得点は{$score}点です" . PHP_EOL;
             }
+            echo "{$this->name}の現在の得点は{$score}点です" . PHP_EOL;
         }
 
         return [$remainCards, $score];
@@ -76,9 +74,8 @@ class ManualPlayer implements Player
 
         if ($cardNumber === 1) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     private function chooseAceScore(): int
@@ -89,9 +86,8 @@ class ManualPlayer implements Player
             $scoreOfAce = 1;
         } elseif ($stdin === 10) {
             $scoreOfAce = 10;
-        } else {
-            '正しい数字を入力してください';
         }
+        echo '正しい数字を入力してください';
 
         return $scoreOfAce;
     }

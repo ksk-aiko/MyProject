@@ -32,8 +32,7 @@ class BlackJack
         } elseif ($stdin === 3) {
             $threePlayer = new ThreePlayerProcess();
             $threePlayer->threePlayerProcess();
-        } else {
-            echo '正しい数字を入力してください' . PHP_EOL;
         }
+        echo '正しい数字を入力してください' . PHP_EOL;
     }
 }
