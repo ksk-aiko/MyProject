@@ -21,10 +21,10 @@ class OnePlayer
         $cards = $card->cards;
         shuffle($cards);
         $this->card1 = array_shift($cards);
-        echo "あなたの引いたカードは{$this->card1}です" . PHP_EOL;
+        echo "{$this->name}の引いたカードは{$this->card1}です" . PHP_EOL;
         shuffle($cards);
         $this->card2 = array_shift($cards);
-        echo "あなたの引いたカードは{$this->card2}です" . PHP_EOL;
+        echo "{$this->name}の引いたカードは{$this->card2}です" . PHP_EOL;
         return $cards;
     }
 
@@ -33,7 +33,7 @@ class OnePlayer
         $key1 = mb_substr($card1, 1, mb_strlen($card1) - 1);
         $key2 = mb_substr($card2, 1, mb_strlen($card2) - 1);
         $score = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
-        echo "あなたの現在の得点は{$score}点です" . PHP_EOL;
+        echo "{$this->name}の現在の得点は{$score}点です" . PHP_EOL;
         return $score;
     }
 
@@ -46,7 +46,7 @@ class OnePlayer
             if ($stdin === 'Y' || $stdin === 'y') {
                 shuffle($remainCards);
                 $card = array_shift($remainCards);
-                echo "あなたの引いたカードは{$card}です" . PHP_EOL;
+                echo "{$this->name}の引いたカードは{$card}です" . PHP_EOL;
                 if ($this->isAce($card)) {
                     $scoreOfAce = $this->chooseAceScore();
                     $score += $scoreOfAce;
@@ -59,9 +59,9 @@ class OnePlayer
             }
 
             if ($score >= 22) {
-                echo "点数が21点を超えました。あなたはゲームオーバーです。'" . PHP_EOL;
+                echo "点数が21点を超えました。{$this->name}はゲームオーバーです。'" . PHP_EOL;
             } else {
-                echo "あなたの現在の得点は{$score}点です" . PHP_EOL;
+                echo "{$this->name}の現在の得点は{$score}点です" . PHP_EOL;
             }
         }
         return [$remainCards, $score];
