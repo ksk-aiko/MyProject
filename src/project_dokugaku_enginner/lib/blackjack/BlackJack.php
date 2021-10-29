@@ -2,14 +2,10 @@
 
 namespace BlackJack;
 
-require_once('Player.php');
 require_once('Dealer.php');
 require_once('OnePlayerProcess.php');
-require_once('OnePlayer.php');
 require_once('TwoPlayerProcess.php');
-require_once('TwoPlayer.php');
 require_once('ThreePlayerProcess.php');
-require_once('ThreePlayer.php');
 require_once('Process.php');
 
 
@@ -27,11 +23,9 @@ class BlackJack
         if ($stdin === 1) {
             $this->controlProcess(new OnePlayerProcess());
         } elseif ($stdin === 2) {
-            $twoPlayer = new TwoPlayerProcess();
-            $twoPlayer->twoPlayerProcess();
+            $this->controlProcess(new TwoPlayerProcess());
         } elseif ($stdin === 3) {
-            $threePlayer = new ThreePlayerProcess();
-            $threePlayer->threePlayerProcess();
+            $this->controlProcess(new ThreePlayerProcess());
         } else {
             echo '正しい数字を入力してください' . PHP_EOL;
         }

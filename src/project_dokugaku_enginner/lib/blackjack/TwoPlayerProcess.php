@@ -2,21 +2,18 @@
 
 namespace BlackJack;
 
-require_once('ManualPlayer.php');
-require_once('AutoPlayer.php');
 require_once('TwoPlayer.php');
+require_once('Process.php');
 
-class TwoPlayerProcess
+class TwoPlayerProcess implements Process
 {
     public function __construct()
     {
     }
 
-    public function twoPlayerProcess()
+    public function proceedProcess()
     {
-        $player1 = new ManualPlayer('あなた');
-        $player2 = new AutoPlayer('プレイヤー２');
-        $twoPlayer = new TwoPlayer($player1, $player2);
+        $twoPlayer = new TwoPlayer('あなた', 'プレイヤー２');
         $cardsOfTwoPlayer = $twoPlayer->drawCard();
         $dealer = new Dealer($cardsOfTwoPlayer[4]);
         $dealer->drawCard();
@@ -48,7 +45,8 @@ class TwoPlayerProcess
                 break;
             }
             echo "{$firstKey}の勝ちです！" . PHP_EOL;
+        } else {
+            echo '今回の勝負は引き分けです' . PHP_EOL;
         }
-        echo '今回の勝負は引き分けです' . PHP_EOL;
     }
 }

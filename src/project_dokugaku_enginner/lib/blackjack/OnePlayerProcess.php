@@ -2,7 +2,6 @@
 
 namespace BlackJack;
 
-require_once('ManualPlayer.php');
 require_once('OnePlayer.php');
 require_once('Process.php');
 

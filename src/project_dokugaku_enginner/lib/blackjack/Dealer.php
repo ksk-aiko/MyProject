@@ -2,10 +2,7 @@
 
 namespace BlackJack;
 
-require_once('Participant.php');
-require_once('Player.php');
-
-class Dealer implements Participant
+class Dealer 
 {
     public array $cards;
     public string $card1;

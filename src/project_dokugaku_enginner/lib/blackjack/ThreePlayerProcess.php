@@ -2,23 +2,18 @@
 
 namespace BlackJack;
 
-require_once('ManualPlayer.php');
-require_once('AutoPlayer.php');
-require_once('TwoPlayer.php');
+require_once('ThreePlayer.php');
+require_once('Process.php');
 
-class ThreePlayerProcess
+class ThreePlayerProcess implements Process
 {
     public function __construct()
     {
     }
 
-    public function threePlayerProcess()
+    public function proceedProcess()
     {
-        $player1 = new ManualPlayer('あなた');
-        $player2 = new AutoPlayer('プレイヤー２');
-        $player3 = new AutoPlayer('プレイヤー3');
-
-        $threePlayer = new ThreePlayer($player1, $player2, $player3);
+        $threePlayer = new ThreePlayer('あなた', 'プレイヤー２', 'プレイヤー３');
         $cardsOfThreePlayer = $threePlayer->drawCard();
         $dealer = new Dealer($cardsOfThreePlayer[6]);
         $dealer->drawCard();
