@@ -39,7 +39,7 @@ class ThreePlayer implements Participant
         shuffle($cards);
         $this->player3->card2 = array_shift($cards);
         echo "プレイヤー3の引いたカードは{$this->player3->card2}です" . PHP_EOL;
-
+        //ここを改善する
         return [$this->player1->card1, $this->player1->card2, $this->player2->card1, $this->player2->card2, $this->player3->card1, $this->player3->card2, $cards];
     }
 

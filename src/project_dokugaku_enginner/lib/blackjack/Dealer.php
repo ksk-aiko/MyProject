@@ -54,8 +54,9 @@ class Dealer implements Participant
 
             if ($score >= 22) {
                 echo '点数が21点を超えました。ディーラーはゲームオーバーです。' . PHP_EOL;
+            } else {
+                echo "ディーラーの現在の得点は{$score}点です" . PHP_EOL;
             }
-            echo "ディーラーの現在の得点は{$score}点です" . PHP_EOL;
         }
         $this->score = $score;
         return $score;

@@ -32,6 +32,7 @@ class ThreePlayerProcess
 
         $dealer->displayScore($dealer->card1, $dealer->card2);
         $dealer->addCard($cardsAndScoreOfPlayer3[0], $dealer->score);
+        //ここを改善する
         $this->judge($cardsAndScoreOfPlayer1[1], $remainCardsAndScoreOfPlayer2[1], $cardsAndScoreOfPlayer3[1], $dealer->score);
         echo 'ブラックジャックを終了します' . PHP_EOL;
     }

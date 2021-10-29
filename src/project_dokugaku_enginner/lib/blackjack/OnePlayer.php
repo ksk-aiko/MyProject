@@ -8,22 +8,25 @@ require_once('Card.php');
 
 class OnePlayer implements Participant
 {
-    public Player $player1;
-    public function __construct(Player $player1)
+    public string $name;
+    public string $card1;
+    public string $card2;
+    public function __construct(string $name)
     {
-        $this->player1 = $player1;
+        $this->name = $name;
     }
+
 
     public function drawCard()
     {
         $card = new Card();
         $cards = $card->cards;
         shuffle($cards);
-        $this->player1->card1 = array_shift($cards);
-        echo "あなたの引いたカードは{$this->player1->card1}です" . PHP_EOL;
+        $this->card1 = array_shift($cards);
+        echo "あなたの引いたカードは{$this->card1}です" . PHP_EOL;
         shuffle($cards);
-        $this->player1->card2 = array_shift($cards);
-        echo "あなたの引いたカードは{$this->player1->card2}です" . PHP_EOL;
+        $this->card2 = array_shift($cards);
+        echo "あなたの引いたカードは{$this->card2}です" . PHP_EOL;
         return $cards;
     }
 
@@ -53,13 +56,15 @@ class OnePlayer implements Participant
                 $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
             } elseif ($stdin === 'N' || $stdin === 'n') {
                 break;
+            } else {
+                echo '正しい文字を入力してください' . PHP_EOL;
             }
-            echo '正しい文字を入力してください' . PHP_EOL;
 
             if ($score >= 22) {
                 echo "点数が21点を超えました。あなたはゲームオーバーです。'" . PHP_EOL;
+            } else {
+                echo "あなたの現在の得点は{$score}点です" . PHP_EOL;
             }
-            echo "あなたの現在の得点は{$score}点です" . PHP_EOL;
         }
         return [$remainCards, $score];
     }
