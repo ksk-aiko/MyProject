@@ -9,6 +9,7 @@ class ThreePlayerProcess implements Process
 {
     public function __construct()
     {
+        
     }
 
     public function proceedProcess()
@@ -32,7 +33,7 @@ class ThreePlayerProcess implements Process
         echo 'ブラックジャックを終了します' . PHP_EOL;
     }
 
-    private function judge(int $scoreOfPlayer1, int $scoreOfPlayer2, int $scoreOfPlayer3, int $scoreOfDealer): void
+    public function judge(int $scoreOfPlayer1, int $scoreOfPlayer2, int $scoreOfPlayer3, int $scoreOfDealer): string
     {
         $scores = [
             'あなた' => $scoreOfPlayer1,
@@ -42,13 +43,13 @@ class ThreePlayerProcess implements Process
         ];
         arsort($scores, SORT_NUMERIC);
         $filterScores = array_filter($scores, fn ($score) => $score < 22);
-        if (count(array_unique($filterScores)) === 1) {
-            echo '今回の勝負は引き分けです' . PHP_EOL;
+        if (count(array_unique($filterScores)) !== 3) {
+            return '今回の勝負は引き分けです' . PHP_EOL ;
         }
         foreach ($filterScores as $key => $value) {
             $firstKey = $key;
             break;
         }
-        echo "{$firstKey}の勝ちです！" . PHP_EOL;
+        return "{$firstKey}の勝ちです！" . PHP_EOL;
     }
 }

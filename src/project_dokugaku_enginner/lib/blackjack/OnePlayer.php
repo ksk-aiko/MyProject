@@ -59,7 +59,7 @@ class OnePlayer
             }
 
             if ($score >= 22) {
-                echo "点数が21点を超えました。{$this->name}はゲームオーバーです。'" . PHP_EOL;
+                echo "点数が21点を超えました。{$this->name}はゲームオーバーです。" . PHP_EOL;
             } else {
                 echo "{$this->name}の現在の得点は{$score}点です" . PHP_EOL;
             }

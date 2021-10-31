@@ -25,7 +25,7 @@ class BlackJack
         } elseif ($stdin === 2) {
             $this->controlProcess(new TwoPlayerProcess());
         } elseif ($stdin === 3) {
-            $this->controlProcess(new ThreePlayerProcess());
+            $this->controlProcess(new ThreePlayerProcess(new ThreePlayer('あなた', 'プレイヤー２', 'プレイヤー３')));
         } else {
             echo '正しい数字を入力してください' . PHP_EOL;
         }
