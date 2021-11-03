@@ -18,11 +18,11 @@ class ThreePlayerProcess implements Process
         $dealer = new Dealer($cardsOfThreePlayer[6]);
         $dealer->drawCard();
         $scoreOfPlayer1 = $threePlayer->displayScoreOfPlayer1($cardsOfThreePlayer[0], $cardsOfThreePlayer[1]);
+        $player1Info = $threePlayer->addCardOfPlayer1($cardsOfThreePlayer[6], $scoreOfPlayer1);
         $scoreOfPlayer2 = $threePlayer->displayScoreOfPlayer2($cardsOfThreePlayer[2], $cardsOfThreePlayer[3]);
+        $player2Info = $threePlayer->addCardOfPlayer2($player1Info[0], $scoreOfPlayer2);
         $scoreOfPlayer3 =
             $threePlayer->displayScoreOfPlayer3($cardsOfThreePlayer[4], $cardsOfThreePlayer[5]);
-        $player1Info = $threePlayer->addCardOfPlayer1($cardsOfThreePlayer[6], $scoreOfPlayer1);
-        $player2Info = $threePlayer->addCardOfPlayer2($player1Info[0], $scoreOfPlayer2);
         $player3Info = $threePlayer->addCardOfPlayer3($player2Info[0], $scoreOfPlayer3);
 
         $dealer->displayScore($dealer->card1, $dealer->card2);

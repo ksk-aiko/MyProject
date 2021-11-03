@@ -18,8 +18,8 @@ class TwoPlayerProcess implements Process
         $dealer = new Dealer($cardsOfTwoPlayer[4]);
         $dealer->drawCard();
         $scoreOfPlayer1 = $twoPlayer->displayScoreOfPlayer1($cardsOfTwoPlayer[0], $cardsOfTwoPlayer[1]);
-        $scoreOfPlayer2 = $twoPlayer->displayScoreOfPlayer2($cardsOfTwoPlayer[2], $cardsOfTwoPlayer[3]);
         $cardsAndScoreOfPlayer1 = $twoPlayer->addCardOfPlayer1($cardsOfTwoPlayer[4], $scoreOfPlayer1);
+        $scoreOfPlayer2 = $twoPlayer->displayScoreOfPlayer2($cardsOfTwoPlayer[2], $cardsOfTwoPlayer[3]);
         $remainCardsAndScoreOfPlayer2 = $twoPlayer->addCardOfPlayer2($cardsAndScoreOfPlayer1[0], $scoreOfPlayer2);
         $dealer->displayScore($dealer->card1, $dealer->card2);
         $dealer->addCard($remainCardsAndScoreOfPlayer2[0], $dealer->score);

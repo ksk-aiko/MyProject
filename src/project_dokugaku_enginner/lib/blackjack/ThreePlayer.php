@@ -36,13 +36,13 @@ class ThreePlayer
         echo "{$this->nameOfPlayer2}の引いたカードは{$this->card2_1}です" . PHP_EOL;
         shuffle($cards);
         $this->card2_2 = array_shift($cards);
-        echo "{$this->nameOfPlayer2}の引いたカードは{$this->card2_2}です" . PHP_EOL;
+        echo "プレイヤー２の引いたもう一枚のカードはわかりません" . PHP_EOL;
         shuffle($cards);
         $this->card3_1 = array_shift($cards);
         echo "{$this->nameOfPlayer3}の引いたカードは{$this->card3_1}です" . PHP_EOL;
         shuffle($cards);
         $this->card3_2 = array_shift($cards);
-        echo "{$this->nameOfPlayer3}の引いたカードは{$this->card3_2}です" . PHP_EOL;
+        echo "プレイヤー３の引いたもう一枚のカードはわかりません" . PHP_EOL;
         //ここを改善する
         return [$this->card1_1, $this->card1_2, $this->card2_1, $this->card2_2, $this->card3_1, $this->card3_2, $cards];
     }
@@ -58,6 +58,7 @@ class ThreePlayer
 
     public function displayScoreOfPlayer2(string $card1, string $card2): int
     {
+        echo "プレイヤー２の引いた２枚目のカードは{$this->card2_2}でした" . PHP_EOL;
         $key1 = mb_substr($card1, mb_strpos($card1, 'の') + 1);
         $key2 = mb_substr($card2, mb_strpos($card2, 'の') + 1);
         $scoreOfPlayer2 = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
@@ -67,6 +68,7 @@ class ThreePlayer
 
     public function displayScoreOfPlayer3(string $card1, string $card2): int
     {
+        echo "プレイヤー３の引いた２枚目のカードは{$this->card3_2}でした" . PHP_EOL;
         $key1 = mb_substr($card1, mb_strpos($card1, 'の') + 1);
         $key2 = mb_substr($card2, mb_strpos($card2, 'の') + 1);
         $scoreOfPlayer3 = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];

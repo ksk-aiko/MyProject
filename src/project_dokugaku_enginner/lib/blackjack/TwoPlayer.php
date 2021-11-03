@@ -32,7 +32,7 @@ class TwoPlayer
         echo "プレイヤー２の引いたカードは{$this->card1OfPlayer2}です" . PHP_EOL;
         shuffle($cards);
         $this->card2OfPlayer2 = array_shift($cards);
-        echo "プレイヤー２の引いたカードは{$this->card2OfPlayer2}です" . PHP_EOL;
+        echo "プレイヤー２の引いたもう一枚のカードはわかりません" . PHP_EOL;
         return [$this->card1OfPlayer1, $this->card2OfPlayer1, $this->card1OfPlayer2, $this->card2OfPlayer2, $cards];
     }
 
@@ -47,6 +47,7 @@ class TwoPlayer
 
     public function displayScoreOfPlayer2(string $card1, string $card2): int
     {
+        echo "プレイヤー２の引いた２枚目のカードは{$this->card2OfPlayer2}でした" . PHP_EOL;
         $key1 = mb_substr($card1, mb_strpos($card1, 'の') + 1);
         $key2 = mb_substr($card2, mb_strpos($card2, 'の') + 1);
         $scoreOfPlayer2 = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
