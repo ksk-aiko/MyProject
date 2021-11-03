@@ -30,8 +30,6 @@ class OnePlayer
 
     public function displayScore(string $card1, string $card2): int
     {
-        // $key1 = mb_substr($card1, 1, mb_strlen($card1) - 1);
-        // $key2 = mb_substr($card2, 1, mb_strlen($card2) - 1);
         $preIndexCard1 = mb_strpos($card1, 'の');
         $preIndexCard2 = mb_strpos($card2, 'の');
         $key1 = mb_substr($card1, $preIndexCard1 + 1);
@@ -74,9 +72,9 @@ class OnePlayer
 
     public function isAce(string $card): bool
     {
-        $cardNumber = (int) mb_substr($card, mb_strpos($card, 'の') + 1);
+        $cardNumber = mb_substr($card, mb_strpos($card, 'の') + 1);
 
-        if ($cardNumber === 1) {
+        if ($cardNumber === 'A') {
             return true;
         }
         return false;

@@ -5,7 +5,7 @@ namespace BlackJack;
 class Card
 {
     public const CARD_SCORES = [
-        1 => 10,
+        'A' => 10,
         2 => 2,
         3 => 3,
         4 => 4,
@@ -15,14 +15,14 @@ class Card
         8 => 8,
         9 => 9,
         10 => 10,
-        11 => 10,
-        12 => 10,
-        13 => 10
+        'J' => 10,
+        'Q' => 10,
+        'K' => 10
     ];
 
     public const CARD_MARKS = ['スペード', 'クラブ', 'ハート', 'ダイヤ'];
 
-    public const CARD_NUM = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+    public const CARD_NUM = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
 
     public $cards;
 

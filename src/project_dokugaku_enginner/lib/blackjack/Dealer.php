@@ -27,10 +27,7 @@ class Dealer
 
     public function displayScore(string $card1, string $card2): int
     {
-        // echo 'ディーラーのターンに入ります' . PHP_EOL;
         echo "ディーラーの引いた２枚目のカードは{$this->card2}でした" . PHP_EOL;
-        // $key1 = substr($card1, 1, strlen($card1) - 1);
-        // $key2 = substr($card2, 1, strlen($card2) - 1);
         $preIndexCard1 = mb_strpos($card1, 'の');
         $preIndexCard2 = mb_strpos($card2, 'の');
         $key1 = mb_substr($card1, $preIndexCard1 + 1);
@@ -67,9 +64,9 @@ class Dealer
 
     private function isAce(string $card): bool
     {
-        $cardNumber = (int) mb_substr($card, mb_strpos($card, 'の') + 1);
+        $cardNumber = mb_substr($card, mb_strpos($card, 'の') + 1);
 
-        if ($cardNumber === 1) {
+        if ($cardNumber === 'A') {
             return true;
         }
         return false;

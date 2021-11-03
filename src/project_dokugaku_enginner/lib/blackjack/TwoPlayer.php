@@ -110,9 +110,9 @@ class TwoPlayer
 
     public function isAce(string $card): bool
     {
-        $cardNumber = (int) mb_substr($card, mb_strpos($card, 'の') + 1);
+        $cardNumber = mb_substr($card, mb_strpos($card, 'の') + 1);
 
-        if ($cardNumber === 1) {
+        if ($cardNumber === 'A') {
             return true;
         }
         return false;
