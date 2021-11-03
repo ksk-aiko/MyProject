@@ -2,7 +2,7 @@
 
 namespace BlackJack;
 
-class Dealer 
+class Dealer
 {
     public array $cards;
     public string $card1;
@@ -29,8 +29,13 @@ class Dealer
     {
         // echo 'ディーラーのターンに入ります' . PHP_EOL;
         echo "ディーラーの引いた２枚目のカードは{$this->card2}でした" . PHP_EOL;
-        $key1 = substr($card1, 1, strlen($card1) - 1);
-        $key2 = substr($card2, 1, strlen($card2) - 1);
+        // $key1 = substr($card1, 1, strlen($card1) - 1);
+        // $key2 = substr($card2, 1, strlen($card2) - 1);
+        $preIndexCard1 = mb_strpos($card1, 'の');
+        $preIndexCard2 = mb_strpos($card2, 'の');
+        $key1 = mb_substr($card1, $preIndexCard1 + 1);
+        $key2 = mb_substr($card2, $preIndexCard2 + 1);
+
         $score = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
         echo "ディーラーの現在の得点は{$score}点です" . PHP_EOL;
         $this->score = $score;
@@ -46,8 +51,9 @@ class Dealer
             if ($this->isAce($card)) {
                 $scoreOfAce = $this->determineAceScore($score);
                 $score += $scoreOfAce;
+            } else {
+                $score += Card::CARD_SCORES[mb_substr($card, mb_strpos($card, 'の') + 1)];
             }
-            $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
 
             if ($score >= 22) {
                 echo '点数が21点を超えました。ディーラーはゲームオーバーです。' . PHP_EOL;
@@ -61,7 +67,7 @@ class Dealer
 
     private function isAce(string $card): bool
     {
-        $cardNumber = (int) substr($card, 1, strlen($card) - 1);
+        $cardNumber = (int) mb_substr($card, mb_strpos($card, 'の') + 1);
 
         if ($cardNumber === 1) {
             return true;
@@ -71,10 +77,10 @@ class Dealer
 
     private function determineAceScore(int $score): int
     {
+        $scoreOfAce = 1;
         if ($score <= 11) {
             $scoreOfAce = 10;
         }
-        $scoreOfAce = 1;
 
 
         return $scoreOfAce;

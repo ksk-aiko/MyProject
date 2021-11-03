@@ -20,7 +20,7 @@ class Card
         13 => 10
     ];
 
-    public const CARD_MARKS = ['S', 'C', 'H', 'D'];
+    public const CARD_MARKS = ['スペード', 'クラブ', 'ハート', 'ダイヤ'];
 
     public const CARD_NUM = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
 
@@ -36,7 +36,7 @@ class Card
         $cards = [];
         foreach (self::CARD_MARKS as $mark) {
             foreach (self::CARD_NUM as $num) {
-                $cards[] = $mark . $num;
+                $cards[] = "{$mark}の{$num}";
             }
         }
         return $cards;

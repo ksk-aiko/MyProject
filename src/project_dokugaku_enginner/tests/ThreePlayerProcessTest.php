@@ -18,19 +18,19 @@ class ThreePlayerProcessTest extends TestCase
         $this->assertSame('今回の勝負は引き分けです' . PHP_EOL, $threePlayer->judge(23, 21, 24, 21));
         //３人残り、２人同じ点数（残りの１人の点数の方が低い）
         $threePlayer = new ThreePlayerProcess();
-        $this->assertSame('今回の勝負は引き分けです' . PHP_EOL, $threePlayer->judge());
+        $this->assertSame('今回の勝負は引き分けです' . PHP_EOL, $threePlayer->judge(23, 19, 19, 18));
         //３人残り、３人同じ点数
         $threePlayer = new ThreePlayerProcess();
-        $this->assertSame('今回の勝負は引き分けです' . PHP_EOL, $threePlayer->judge());
+        $this->assertSame('今回の勝負は引き分けです' . PHP_EOL, $threePlayer->judge(18,18,18,24));
         //４人残り、２人同じ点数
         $threePlayer = new ThreePlayerProcess();
-        $this->assertSame('今回の勝負は引き分けです' . PHP_EOL, $threePlayer->judge());
+        $this->assertSame('今回の勝負は引き分けです' . PHP_EOL, $threePlayer->judge(18, 17, 19, 19));
         //４人残り、３人同じ点数
         $threePlayer = new ThreePlayerProcess();
-        $this->assertSame('今回の勝負は引き分けです' . PHP_EOL, $threePlayer->judge());
+        $this->assertSame('今回の勝負は引き分けです' . PHP_EOL, $threePlayer->judge(19, 18, 19, 19));
         //４人残り、４人同じ点数
         $threePlayer = new ThreePlayerProcess();
-        $this->assertSame('今回の勝負は引き分けです' . PHP_EOL, $threePlayer->judge());
+        $this->assertSame('今回の勝負は引き分けです' . PHP_EOL, $threePlayer->judge(20, 20, 20, 20));
 
     }
 }

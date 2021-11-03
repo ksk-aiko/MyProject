@@ -30,8 +30,12 @@ class OnePlayer
 
     public function displayScore(string $card1, string $card2): int
     {
-        $key1 = mb_substr($card1, 1, mb_strlen($card1) - 1);
-        $key2 = mb_substr($card2, 1, mb_strlen($card2) - 1);
+        // $key1 = mb_substr($card1, 1, mb_strlen($card1) - 1);
+        // $key2 = mb_substr($card2, 1, mb_strlen($card2) - 1);
+        $preIndexCard1 = mb_strpos($card1, 'の');
+        $preIndexCard2 = mb_strpos($card2, 'の');
+        $key1 = mb_substr($card1, $preIndexCard1 + 1);
+        $key2 = mb_substr($card2, $preIndexCard2 + 1);
         $score = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
         echo "{$this->name}の現在の得点は{$score}点です" . PHP_EOL;
         return $score;
@@ -50,8 +54,9 @@ class OnePlayer
                 if ($this->isAce($card)) {
                     $scoreOfAce = $this->chooseAceScore();
                     $score += $scoreOfAce;
+                } else {
+                    $score += Card::CARD_SCORES[mb_substr($card, mb_strpos($card, 'の') + 1)];
                 }
-                $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
             } elseif ($stdin === 'N' || $stdin === 'n') {
                 break;
             } else {
@@ -69,7 +74,7 @@ class OnePlayer
 
     public function isAce(string $card): bool
     {
-        $cardNumber = (int) substr($card, 1, strlen($card) - 1);
+        $cardNumber = (int) mb_substr($card, mb_strpos($card, 'の') + 1);
 
         if ($cardNumber === 1) {
             return true;
@@ -85,8 +90,9 @@ class OnePlayer
             $scoreOfAce = 1;
         } elseif ($stdin === 10) {
             $scoreOfAce = 10;
+        } else {
+            echo '正しい数字を入力してください';
         }
-        echo '正しい数字を入力してください';
 
         return $scoreOfAce;
     }

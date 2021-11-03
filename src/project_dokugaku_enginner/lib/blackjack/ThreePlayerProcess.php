@@ -9,7 +9,6 @@ class ThreePlayerProcess implements Process
 {
     public function __construct()
     {
-        
     }
 
     public function proceedProcess()
@@ -22,14 +21,15 @@ class ThreePlayerProcess implements Process
         $scoreOfPlayer2 = $threePlayer->displayScoreOfPlayer2($cardsOfThreePlayer[2], $cardsOfThreePlayer[3]);
         $scoreOfPlayer3 =
             $threePlayer->displayScoreOfPlayer3($cardsOfThreePlayer[4], $cardsOfThreePlayer[5]);
-        $cardsAndScoreOfPlayer1 = $threePlayer->addCardOfPlayer1($cardsOfThreePlayer[6], $scoreOfPlayer1);
-        $remainCardsAndScoreOfPlayer2 = $threePlayer->addCardOfPlayer2($cardsAndScoreOfPlayer1[0], $scoreOfPlayer2);
-        $cardsAndScoreOfPlayer3 = $threePlayer->addCardOfPlayer3($remainCardsAndScoreOfPlayer2[0], $scoreOfPlayer3);
+        $player1Info = $threePlayer->addCardOfPlayer1($cardsOfThreePlayer[6], $scoreOfPlayer1);
+        $player2Info = $threePlayer->addCardOfPlayer2($player1Info[0], $scoreOfPlayer2);
+        $player3Info = $threePlayer->addCardOfPlayer3($player2Info[0], $scoreOfPlayer3);
 
         $dealer->displayScore($dealer->card1, $dealer->card2);
-        $dealer->addCard($cardsAndScoreOfPlayer3[0], $dealer->score);
+        $dealer->addCard($player3Info[0], $dealer->score);
         //ここを改善する
-        $this->judge($cardsAndScoreOfPlayer1[1], $remainCardsAndScoreOfPlayer2[1], $cardsAndScoreOfPlayer3[1], $dealer->score);
+        $result = $this->judge($player1Info[1], $player2Info[1], $player3Info[1], $dealer->score);
+        echo $result;
         echo 'ブラックジャックを終了します' . PHP_EOL;
     }
 
@@ -43,8 +43,15 @@ class ThreePlayerProcess implements Process
         ];
         arsort($scores, SORT_NUMERIC);
         $filterScores = array_filter($scores, fn ($score) => $score < 22);
-        if (count(array_unique($filterScores)) !== 3) {
-            return '今回の勝負は引き分けです' . PHP_EOL ;
+        array_values($filterScores);
+        if (count($filterScores) === 0) {
+            return '今回の勝負は引き分けです' . PHP_EOL;
+        }
+        if (count($filterScores) !== count(array_unique($filterScores))) {
+            $arg = array_count_values($filterScores);
+            if ($arg[max(array_unique($filterScores))] >= 2) {
+                return '今回の勝負は引き分けです' . PHP_EOL;
+            }
         }
         foreach ($filterScores as $key => $value) {
             $firstKey = $key;

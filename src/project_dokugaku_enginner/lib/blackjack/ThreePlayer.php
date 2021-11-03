@@ -2,18 +2,17 @@
 
 namespace BlackJack;
 
-
 class ThreePlayer
 {
     public string $nameOfPlayer1;
     public string $nameOfPlayer2;
     public string $nameOfPlayer3;
-    public string $card1OfPlayer1;
-    public string $card2OfPlayer1;
-    public string $card1OfPlayer2;
-    public string $card2OfPlayer2;
-    public string $card1OfPlayer3;
-    public string $card2OfPlayer3;
+    public string $card1_1;
+    public string $card1_2;
+    public string $card2_1;
+    public string $card2_2;
+    public string $card3_1;
+    public string $card3_2;
 
     public function __construct(string $nameOfPlayer1, string $nameOfPlayer2, string $nameOfPlayer3)
     {
@@ -27,31 +26,31 @@ class ThreePlayer
         $card = new Card();
         $cards = $card->cards;
         shuffle($cards);
-        $this->card1OfPlayer1 = array_shift($cards);
-        echo "{$this->nameOfPlayer1}の引いたカードは{$this->card1OfPlayer1}です" . PHP_EOL;
+        $this->card1_1 = array_shift($cards);
+        echo "{$this->nameOfPlayer1}の引いたカードは{$this->card1_1}です" . PHP_EOL;
         shuffle($cards);
-        $this->card2OfPlayer1 = array_shift($cards);
-        echo "{$this->nameOfPlayer1}の引いたカードは{$this->card2OfPlayer1}です" . PHP_EOL;
+        $this->card1_2 = array_shift($cards);
+        echo "{$this->nameOfPlayer1}の引いたカードは{$this->card1_2}です" . PHP_EOL;
         shuffle($cards);
-        $this->card1OfPlayer2 = array_shift($cards);
-        echo "{$this->nameOfPlayer2}}の引いたカードは{$this->card1OfPlayer2}です" . PHP_EOL;
+        $this->card2_1 = array_shift($cards);
+        echo "{$this->nameOfPlayer2}の引いたカードは{$this->card2_1}です" . PHP_EOL;
         shuffle($cards);
-        $this->card2OfPlayer2 = array_shift($cards);
-        echo "{$this->nameOfPlayer2}}の引いたカードは{$this->card2OfPlayer2}です" . PHP_EOL;
+        $this->card2_2 = array_shift($cards);
+        echo "{$this->nameOfPlayer2}の引いたカードは{$this->card2_2}です" . PHP_EOL;
         shuffle($cards);
-        $this->card1OfPlayer3 = array_shift($cards);
-        echo "{$this->nameOfPlayer3}}の引いたカードは{$this->card1OfPlayer3}です" . PHP_EOL;
+        $this->card3_1 = array_shift($cards);
+        echo "{$this->nameOfPlayer3}の引いたカードは{$this->card3_1}です" . PHP_EOL;
         shuffle($cards);
-        $this->card2OfPlayer3 = array_shift($cards);
-        echo "{$this->nameOfPlayer3}}の引いたカードは{$this->card2OfPlayer3}です" . PHP_EOL;
+        $this->card3_2 = array_shift($cards);
+        echo "{$this->nameOfPlayer3}の引いたカードは{$this->card3_2}です" . PHP_EOL;
         //ここを改善する
-        return [$this->card1OfPlayer1, $this->card2OfPlayer1, $this->card1OfPlayer2, $this->card2OfPlayer2, $this->card1OfPlayer3, $this->card2OfPlayer3, $cards];
+        return [$this->card1_1, $this->card1_2, $this->card2_1, $this->card2_2, $this->card3_1, $this->card3_2, $cards];
     }
 
     public function displayScoreOfPlayer1(string $card1, string $card2): int
     {
-        $key1 = mb_substr($card1, 1, mb_strlen($card1) - 1);
-        $key2 = mb_substr($card2, 1, mb_strlen($card2) - 1);
+        $key1 = mb_substr($card1, mb_strpos($card1, 'の') + 1);
+        $key2 = mb_substr($card2, mb_strpos($card2, 'の') + 1);
         $scoreOfPlayer1 = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
         echo "{$this->nameOfPlayer1}の現在の得点は{$scoreOfPlayer1}点です" . PHP_EOL;
         return $scoreOfPlayer1;
@@ -59,8 +58,8 @@ class ThreePlayer
 
     public function displayScoreOfPlayer2(string $card1, string $card2): int
     {
-        $key1 = mb_substr($card1, 1, mb_strlen($card1) - 1);
-        $key2 = mb_substr($card2, 1, mb_strlen($card2) - 1);
+        $key1 = mb_substr($card1, mb_strpos($card1, 'の') + 1);
+        $key2 = mb_substr($card2, mb_strpos($card2, 'の') + 1);
         $scoreOfPlayer2 = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
         echo "{$this->nameOfPlayer2}の現在の得点は{$scoreOfPlayer2}点です" . PHP_EOL;
         return $scoreOfPlayer2;
@@ -68,8 +67,8 @@ class ThreePlayer
 
     public function displayScoreOfPlayer3(string $card1, string $card2): int
     {
-        $key1 = mb_substr($card1, 1, mb_strlen($card1) - 1);
-        $key2 = mb_substr($card2, 1, mb_strlen($card2) - 1);
+        $key1 = mb_substr($card1, mb_strpos($card1, 'の') + 1);
+        $key2 = mb_substr($card2, mb_strpos($card2, 'の') + 1);
         $scoreOfPlayer3 = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
         echo "{$this->nameOfPlayer3}の現在の得点は{$scoreOfPlayer3}点です" . PHP_EOL;
         return $scoreOfPlayer3;
@@ -88,8 +87,9 @@ class ThreePlayer
                 if ($this->isAce($card)) {
                     $scoreOfAce = $this->chooseAceScore();
                     $score += $scoreOfAce;
+                } else {
+                    $score += Card::CARD_SCORES[mb_substr($card, mb_strpos($card, 'の') + 1)];
                 }
-                $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
             } elseif ($stdin === 'N' || $stdin === 'n') {
                 break;
             } else {
@@ -116,8 +116,9 @@ class ThreePlayer
             if ($this->isAce($card)) {
                 $scoreOfAce = $this->determineAceScore($score);
                 $score += $scoreOfAce;
+            } else {
+                $score += Card::CARD_SCORES[mb_substr($card, mb_strpos($card, 'の') + 1)];
             }
-            $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
 
             if ($score >= 22) {
                 echo "点数が21点を超えました。{$this->nameOfPlayer2}はゲームオーバーです。" . PHP_EOL;
@@ -126,7 +127,6 @@ class ThreePlayer
             }
         }
         return [$remainCards, $score];
-
     }
 
     public function addCardOfPlayer3(array $remainCards, int $score)
@@ -139,8 +139,9 @@ class ThreePlayer
             if ($this->isAce($card)) {
                 $scoreOfAce = $this->determineAceScore($score);
                 $score += $scoreOfAce;
+            } else {
+                $score += Card::CARD_SCORES[mb_substr($card, mb_strpos($card, 'の') + 1)];
             }
-            $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
 
             if ($score >= 22) {
                 echo "点数が21点を超えました。{$this->nameOfPlayer3}はゲームオーバーです。" . PHP_EOL;
@@ -149,12 +150,11 @@ class ThreePlayer
             }
         }
         return [$remainCards, $score];
-
     }
 
     public function isAce(string $card): bool
     {
-        $cardNumber = (int) substr($card, 1, strlen($card) - 1);
+        $cardNumber = (int) mb_substr($card, mb_strpos($card, 'の') + 1);
 
         if ($cardNumber === 1) {
             return true;
@@ -170,19 +170,19 @@ class ThreePlayer
             $scoreOfAce = 1;
         } elseif ($stdin === 10) {
             $scoreOfAce = 10;
+        } else {
+            echo '正しい数字を入力してください';
         }
-        echo '正しい数字を入力してください';
 
         return $scoreOfAce;
     }
 
     private function determineAceScore(int $score): int
     {
+        $scoreOfAce = 1;
         if ($score <= 11) {
             $scoreOfAce = 10;
         }
-        $scoreOfAce = 1;
-
 
         return $scoreOfAce;
     }

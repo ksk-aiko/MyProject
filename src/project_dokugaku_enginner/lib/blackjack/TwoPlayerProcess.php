@@ -23,11 +23,12 @@ class TwoPlayerProcess implements Process
         $remainCardsAndScoreOfPlayer2 = $twoPlayer->addCardOfPlayer2($cardsAndScoreOfPlayer1[0], $scoreOfPlayer2);
         $dealer->displayScore($dealer->card1, $dealer->card2);
         $dealer->addCard($remainCardsAndScoreOfPlayer2[0], $dealer->score);
-        $this->judge($cardsAndScoreOfPlayer1[1], $remainCardsAndScoreOfPlayer2[1], $dealer->score);
+        $result = $this->judge($cardsAndScoreOfPlayer1[1], $remainCardsAndScoreOfPlayer2[1], $dealer->score);
+        echo $result;
         echo 'ブラックジャックを終了します' . PHP_EOL;
     }
 
-    private function judge(int $scoreOfPlayer1, int $scoreOfPlayer2, int $scoreOfDealer): void
+    private function judge(int $scoreOfPlayer1, int $scoreOfPlayer2, int $scoreOfDealer): string
     {
         $scores = [
             'あなた' => $scoreOfPlayer1,
@@ -36,17 +37,20 @@ class TwoPlayerProcess implements Process
         ];
         arsort($scores, SORT_NUMERIC);
         $filterScores = array_filter($scores, fn ($score) => $score < 22);
-        if (count($filterScores) !== 0) {
-            if (count(array_unique($filterScores)) === 1) {
-                echo '今回の勝負は引き分けです' . PHP_EOL;
-            }
-            foreach ($filterScores as $key => $value) {
-                $firstKey = $key;
-                break;
-            }
-            echo "{$firstKey}の勝ちです！" . PHP_EOL;
-        } else {
-            echo '今回の勝負は引き分けです' . PHP_EOL;
+        array_values($filterScores);
+        if (count($filterScores) === 0) {
+            return '今回の勝負は引き分けです' . PHP_EOL;
         }
+        if (count($filterScores) !== count(array_unique($filterScores))) {
+            $arg = array_count_values($filterScores);
+            if ($arg[max(array_unique($filterScores))] >= 2) {
+                return '今回の勝負は引き分けです' . PHP_EOL;
+            }
+        }
+        foreach ($filterScores as $key => $value) {
+            $firstKey = $key;
+            break;
+        }
+        return "{$firstKey}の勝ちです！" . PHP_EOL;
     }
 }

@@ -2,7 +2,6 @@
 
 namespace BlackJack;
 
-
 class TwoPlayer
 {
     public string $nameOfPlayer1;
@@ -39,8 +38,8 @@ class TwoPlayer
 
     public function displayScoreOfPlayer1(string $card1, string $card2): int
     {
-        $key1 = mb_substr($card1, 1, mb_strlen($card1) - 1);
-        $key2 = mb_substr($card2, 1, mb_strlen($card2) - 1);
+        $key1 = mb_substr($card1, mb_strpos($card1, 'の') + 1);
+        $key2 = mb_substr($card2, mb_strpos($card2, 'の') + 1);
         $scoreOfPlayer1 = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
         echo "{$this->nameOfPlayer1}の現在の得点は{$scoreOfPlayer1}点です" . PHP_EOL;
         return $scoreOfPlayer1;
@@ -48,8 +47,8 @@ class TwoPlayer
 
     public function displayScoreOfPlayer2(string $card1, string $card2): int
     {
-        $key1 = mb_substr($card1, 1, mb_strlen($card1) - 1);
-        $key2 = mb_substr($card2, 1, mb_strlen($card2) - 1);
+        $key1 = mb_substr($card1, mb_strpos($card1, 'の') + 1);
+        $key2 = mb_substr($card2, mb_strpos($card2, 'の') + 1);
         $scoreOfPlayer2 = Card::CARD_SCORES[$key1] + Card::CARD_SCORES[$key2];
         echo "{$this->nameOfPlayer2}の現在の得点は{$scoreOfPlayer2}点です" . PHP_EOL;
         return $scoreOfPlayer2;
@@ -68,8 +67,9 @@ class TwoPlayer
                 if ($this->isAce($card)) {
                     $scoreOfAce = $this->chooseAceScore();
                     $score += $scoreOfAce;
+                } else {
+                    $score += Card::CARD_SCORES[mb_substr($card, mb_strpos($card, 'の') + 1)];
                 }
-                $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
             } elseif ($stdin === 'N' || $stdin === 'n') {
                 break;
             } else {
@@ -97,7 +97,7 @@ class TwoPlayer
                 $scoreOfAce = $this->determineAceScore($score);
                 $score += $scoreOfAce;
             }
-            $score += Card::CARD_SCORES[substr($card, 1, strlen($card) - 1)];
+            $score += Card::CARD_SCORES[mb_substr($card, mb_strpos($card, 'の') + 1)];
 
             if ($score >= 22) {
                 echo "点数が21点を超えました。{$this->nameOfPlayer2}はゲームオーバーです。" . PHP_EOL;
@@ -110,7 +110,7 @@ class TwoPlayer
 
     public function isAce(string $card): bool
     {
-        $cardNumber = (int) substr($card, 1, strlen($card) - 1);
+        $cardNumber = (int) mb_substr($card, mb_strpos($card, 'の') + 1);
 
         if ($cardNumber === 1) {
             return true;
@@ -126,19 +126,19 @@ class TwoPlayer
             $scoreOfAce = 1;
         } elseif ($stdin === 10) {
             $scoreOfAce = 10;
+        } else {
+            echo '正しい数字を入力してください';
         }
-        echo '正しい数字を入力してください';
 
         return $scoreOfAce;
     }
 
     private function determineAceScore(int $score): int
     {
+        $scoreOfAce = 1;
         if ($score <= 11) {
             $scoreOfAce = 10;
         }
-        $scoreOfAce = 1;
-
 
         return $scoreOfAce;
     }
