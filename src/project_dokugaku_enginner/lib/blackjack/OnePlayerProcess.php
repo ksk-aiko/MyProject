@@ -18,8 +18,8 @@ class OnePlayerProcess implements Process
         $dealer = new Dealer($remainCards);
         $remainCards = $dealer->drawCard();
         $scoreOfPlayer = $onePlayer->displayScore($onePlayer->card1, $onePlayer->card2);
-        $onePlayer->remainCards = $remainCards;
-        $onePlayer->score = $scoreOfPlayer;
+        // $onePlayer->remainCards = $remainCards;
+        // $onePlayer->score = $scoreOfPlayer;
         $cardsAndScore = $onePlayer->addCard($remainCards, $scoreOfPlayer);
         $remainCards = $cardsAndScore[0];
         $scoreOfPlayer = $cardsAndScore[1];

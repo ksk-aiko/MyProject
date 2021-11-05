@@ -21,17 +21,17 @@ class BlackJack
         echo '参加人数は何人ですか？：';
         $stdin = (int) trim(fgets(STDIN));
         if ($stdin === 1) {
-            $this->controlProcess(new OnePlayerProcess());
+            $this->divideProcess(new OnePlayerProcess());
         } elseif ($stdin === 2) {
-            $this->controlProcess(new TwoPlayerProcess());
+            $this->divideProcess(new TwoPlayerProcess());
         } elseif ($stdin === 3) {
-            $this->controlProcess(new ThreePlayerProcess(new ThreePlayer('あなた', 'プレイヤー２', 'プレイヤー３')));
+            $this->divideProcess(new ThreePlayerProcess());
         } else {
             echo '正しい数字を入力してください' . PHP_EOL;
         }
     }
 
-    private function controlProcess(Process $process): void
+    private function divideProcess(Process $process): void
     {
         $process->proceedProcess();
     }
